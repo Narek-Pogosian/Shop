@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 240 8% 20%;
+    --primary-foreground: 0 0% 98%;
+
+    --background: 240 30% 98%;
+    --background-card: 240 13% 99%;
+    --background-input: 240 13% 99%;
+    --background-popover: 240 13% 100%;
+    --background-popover-focus: 240 13% 96%;
+
+    --foreground: 240 8% 5%;
+    --foreground-muted: 240 8% 55%;
+    --foreground-placeholder: 240 5% 60%;
+
+    --scrollbar: 240 10% 82%;
+    --border: 240 8% 93%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 6px;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: var(--ring);
+  }
+  .dark {
+    --primary: 0 0% 94%;
+    --primary-foreground: 0 0% 8%;
+
+    --background: 240, 8%, 7%;
+    --background-card: 240, 8%, 9.5%;
+    --background-input: 240, 8%, 10%;
+    --background-popover: 240, 8%, 10%;
+    --background-popover-focus: 240, 8%, 20%;
+
+    --foreground: 240 8% 98%;
+    --foreground-muted: 240 8% 65%;
+    --foreground-placeholder: 240 8% 58%;
+
+    --scrollbar: 240, 8%, 23%;
+    --border: 240 6% 14%;
+    --ring: 240 10% 97.9%;
+
+    --sidebar-background: 240 5.9% 6%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 6% 16%;
+    --sidebar-accent-foreground: 240 8% 95.9%;
+    --sidebar-border: 240 6% 2%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply h-full scrollbar-thin scrollbar-track-transparent scrollbar-thumb-scrollbar;
+  }
+
+  body {
+    @apply h-full overflow-y-scroll bg-background text-foreground;
+  }
+}
