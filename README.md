@@ -1,5 +1,3 @@
-# E-Commerce Project with Next.js 15
-
 ## 📚 About
 
 This is an e-commerce project built with **Next.js 15**, **Tailwind CSS**, and **Prisma**. It features both an **Admin Panel** for managing categories and products, and a **Customer-facing Shop Interface** with product sorting, filtering, pagination, and detailed product pages.
