@@ -1,0 +1,187 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Product {
+    id           Int     @id @default(autoincrement())
+    name         String
+    slug         String  @unique
+    price        Decimal
+    description  String
+    isFeatured   Boolean @default(false)
+    rating       Decimal @default(0)
+    poster       String
+    searchVector String?
+
+    categorySlug      String
+    category          Category           @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)
+    reviews           Review[]
+    productAttributes ProductAttribute[]
+    cartItems         CartItem[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([slug])
+    @@index([price])
+    @@index([rating])
+    @@index([categorySlug])
+}
+
+model ProductAttribute {
+    id        Int                     @id @default(autoincrement())
+    name      String
+    values    ProductAttributeValue[]
+    productId Int
+    product   Product                 @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([productId])
+}
+
+model ProductAttributeValue {
+    id                 Int              @id @default(autoincrement())
+    value              String
+    productAttributeId Int
+    productAttribute   ProductAttribute @relation(fields: [productAttributeId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([productAttributeId, value])
+    @@index([productAttributeId])
+    @@index([value])
+}
+
+model Category {
+    id                 Int                 @id @default(autoincrement())
+    name               String
+    slug               String              @unique
+    image              String
+    description        String?
+    products           Product[]
+    categoryAttributes CategoryAttribute[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([slug])
+}
+
+model CategoryAttribute {
+    id          Int                      @id @default(autoincrement())
+    name        String
+    description String?
+    categoryId  Int
+    category    Category                 @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    values      CategoryAttributeValue[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([categoryId])
+}
+
+model CategoryAttributeValue {
+    id                  Int               @id @default(autoincrement())
+    value               String
+    categoryAttributeId Int
+    categoryAttribute   CategoryAttribute @relation(fields: [categoryAttributeId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([categoryAttributeId, value])
+    @@index([categoryAttributeId])
+}
+
+model Cart {
+    id        Int        @id @default(autoincrement())
+    cartToken String?
+    userId    String?    @unique
+    user      User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
+    items     CartItem[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([userId])
+    @@index([cartToken])
+}
+
+model CartItem {
+    id                Int  @id @default(autoincrement())
+    quantity          Int  @default(1)
+    productId         Int
+    cartId            Int
+    productAttributes Json
+
+    cart    Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
+    product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([cartId])
+}
+
+model Review {
+    id        Int     @id @default(autoincrement())
+    rating    Decimal @default(0)
+    comment   String?
+    userId    String
+    user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    productId Int
+    product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([userId, productId])
+    @@index([productId])
+    @@index([userId])
+}
+
+enum UserRole {
+    ADMIN
+    USER
+}
+
+model User {
+    id             String    @id @default(cuid())
+    name           String?
+    role           UserRole  @default(USER)
+    hashedPassword String?
+    email          String?   @unique
+    emailVerified  DateTime?
+    image          String?
+    accounts       Account[]
+    reviews        Review[]
+    cart           Cart?
+}
+
+model Account {
+    id                       String  @id @default(cuid())
+    userId                   String
+    type                     String
+    provider                 String
+    providerAccountId        String
+    refresh_token            String?
+    access_token             String?
+    expires_at               Int?
+    token_type               String?
+    scope                    String?
+    id_token                 String?
+    session_state            String?
+    user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    refresh_token_expires_in Int?
+
+    @@unique([provider, providerAccountId])
+}

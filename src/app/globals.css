@@ -1,0 +1,159 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@plugin 'tailwind-scrollbar';
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, sans-serif;
+}
+
+:root {
+  --accent: hsl(180, 45%, 30%);
+  --accent-text: hsl(180, 48%, 23%);
+  --accent-foreground: hsl(0, 100%, 100%);
+
+  --primary: hsl(240 5.9% 16%);
+  --primary-foreground: hsl(0 0% 98%);
+
+  --destructive: hsl(0, 48%, 48%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --destructive-text: hsl(0, 52%, 40%);
+
+  --background: hsl(240, 20%, 96.5%);
+  --background-card: hsl(0, 0%, 100%);
+  --background-popover: hsl(0, 0%, 100%);
+  --background-popover-focus: hsl(0, 0%, 95%);
+
+  --foreground: hsl(240, 2%, 10%);
+  --foreground-muted: hsl(240, 2%, 35%);
+
+  --input-background: hsl(240, 12%, 98%);
+  --input-foreground: hsl(240, 2%, 10%);
+  --input-placeholder: hsl(240, 6%, 35%);
+  --input-border: hsl(240, 12%, 87.5%);
+
+  --scrollbar: hsl(240, 8%, 82%);
+  --border: hsl(240, 6%, 90%);
+  --ring: hsl(0, 0%, 0%);
+
+  --radius: 10px;
+
+  --sidebar-background: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: var(--ring);
+}
+
+.dark {
+  --accent-text: hsl(180, 48%, 46%);
+  --destructive-text: hsl(0, 80%, 68%);
+
+  --primary: hsl(0 0% 98%);
+  --primary-foreground: hsl(240 5.9% 10%);
+
+  --background: hsl(240, 8%, 8%);
+  --background-card: hsl(240, 10%, 10%);
+  --background-popover: hsl(240, 6%, 8.5%);
+  --background-popover-focus: hsl(240, 6%, 14.5%);
+
+  --foreground: hsl(240, 8%, 98%);
+  --foreground-muted: hsl(240, 4%, 70%);
+
+  --input-background: hsl(240, 8%, 12%);
+  --input-foreground: hsl(240, 8%, 98%);
+  --input-placeholder: hsl(240, 6%, 65%);
+  --input-border: hsl(240, 8%, 18%);
+
+  --scrollbar: hsl(240, 8%, 22%);
+  --border: hsl(240, 6%, 16%);
+  --ring: hsl(0, 0%, 100%);
+
+  --sidebar-background: hsl(240 5.9% 6%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(240, 2%, 88%);
+  --sidebar-primary-foreground: hsl(0, 0%, 15%);
+  --sidebar-accent: hsl(240 6% 16%);
+  --sidebar-accent-foreground: hsl(240 8% 95.9%);
+  --sidebar-border: hsl(240 6% 2%);
+}
+
+@theme inline {
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-text: var(--destructive-text);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-background: var(--background);
+  --color-background-card: var(--background-card);
+  --color-background-popover: var(--background-popover);
+  --color-background-popover-focus: var(--background-popover-focus);
+
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+
+  --color-input-background: var(--input-background);
+  --color-input-foreground: var(--input-foreground);
+  --color-input-placeholder: var(--input-placeholder);
+  --color-input-border: var(--input-border);
+
+  --color-scrollbar: var(--scrollbar);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --color-sidebar-background: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: calc(var(--radius) + 2px);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 6px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/40;
+  }
+
+  html {
+    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-scrollbar h-full;
+  }
+
+  body {
+    @apply bg-background text-foreground h-full overflow-x-clip overflow-y-scroll;
+  }
+}
+
+@layer utilities {
+  .container {
+    max-inline-size: 1300px;
+    margin-inline: auto;
+    padding-inline: 0.5rem;
+  }
+
+  .rounded {
+    border-radius: var(--radius);
+  }
+}
+
+html body[data-scroll-locked] {
+  overflow-y: scroll !important;
+  --removed-body-scroll-bar-size: 0 !important;
+  margin-right: 0 !important;
+}
