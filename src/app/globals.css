@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+
 @plugin 'tailwind-scrollbar';
 
 @variant dark (&:where(.dark, .dark *));
@@ -48,6 +50,7 @@
   --sidebar-accent-foreground: hsl(240 5.9% 10%);
   --sidebar-border: hsl(220 13% 91%);
   --sidebar-ring: var(--ring);
+  --sidebar: hsl(0 0% 98%);
 }
 
 .dark {
@@ -81,6 +84,8 @@
   --sidebar-accent: hsl(240 6% 16%);
   --sidebar-accent-foreground: hsl(240 8% 95.9%);
   --sidebar-border: hsl(240 6% 2%);
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
 @theme inline {
@@ -124,6 +129,8 @@
   --radius-md: calc(var(--radius) + 2px);
   --radius-lg: calc(var(--radius) + 4px);
   --radius-xl: calc(var(--radius) + 6px);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar: var(--sidebar);
 }
 
 @layer base {
@@ -156,4 +163,13 @@ html body[data-scroll-locked] {
   overflow-y: scroll !important;
   --removed-body-scroll-bar-size: 0 !important;
   margin-right: 0 !important;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

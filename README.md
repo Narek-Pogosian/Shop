@@ -1,12 +1,3 @@
-git init
-
-git remote add origin https://github.com/your-username/your-repo.git
-
-git add .
-git commit -m "Initialize project"
-
-git push -u origin main --force
-
 ### TODO:
 
 - [ ] Add products to db via admin
