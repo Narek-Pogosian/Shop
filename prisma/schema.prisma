@@ -34,30 +34,16 @@ model Product {
 }
 
 model ProductAttribute {
-    id        Int                     @id @default(autoincrement())
+    id        Int      @id @default(autoincrement())
     name      String
-    values    ProductAttributeValue[]
+    values    String[]
     productId Int
-    product   Product                 @relation(fields: [productId], references: [id], onDelete: Cascade)
+    product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
     @@index([productId])
-}
-
-model ProductAttributeValue {
-    id                 Int              @id @default(autoincrement())
-    value              String
-    productAttributeId Int
-    productAttribute   ProductAttribute @relation(fields: [productAttributeId], references: [id])
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    @@unique([productAttributeId, value])
-    @@index([productAttributeId])
-    @@index([value])
 }
 
 model Category {
@@ -76,30 +62,17 @@ model Category {
 }
 
 model CategoryAttribute {
-    id          Int                      @id @default(autoincrement())
+    id          Int      @id @default(autoincrement())
     name        String
     description String?
     categoryId  Int
-    category    Category                 @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-    values      CategoryAttributeValue[]
+    category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    values      String[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
     @@index([categoryId])
-}
-
-model CategoryAttributeValue {
-    id                  Int               @id @default(autoincrement())
-    value               String
-    categoryAttributeId Int
-    categoryAttribute   CategoryAttribute @relation(fields: [categoryAttributeId], references: [id])
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    @@unique([categoryAttributeId, value])
-    @@index([categoryAttributeId])
 }
 
 model Cart {

@@ -1,5 +1,5 @@
 import { type Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import { Providers } from "@/components/providers";
 import "./globals.css";
 
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const geist = Geist_Mono({
+const geist = Geist({
   subsets: ["latin"],
   variable: "--font-geist-sans",
 });

@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @plugin 'tailwind-scrollbar';
 
 @variant dark (&:where(.dark, .dark *));
@@ -149,7 +147,7 @@
 
 @layer utilities {
   .container {
-    max-inline-size: 1300px;
+    max-inline-size: 1240px;
     margin-inline: auto;
     padding-inline: 0.5rem;
   }
@@ -163,13 +161,4 @@ html body[data-scroll-locked] {
   overflow-y: scroll !important;
   --removed-body-scroll-bar-size: 0 !important;
   margin-right: 0 !important;
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
 }
