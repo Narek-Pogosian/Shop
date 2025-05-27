@@ -1,7 +1,9 @@
+import PageTitle from "./_components/page-title";
+
 function AdminHomePage() {
   return (
     <>
-      <h1>Admin Home Page</h1>
+      <PageTitle>Admin Home Page</PageTitle>
     </>
   );
 }

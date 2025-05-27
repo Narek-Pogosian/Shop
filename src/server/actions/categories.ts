@@ -11,6 +11,7 @@ export const deleteCategoryAction = adminActionClient
   .action(async ({ parsedInput }) => {
     await db.category.delete({ where: { id: parsedInput } });
     revalidateDbCache("categories");
+    revalidateDbCache("products");
   });
 
 export const createCategoryAction = adminActionClient

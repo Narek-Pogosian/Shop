@@ -63,7 +63,7 @@ export default function CategoryForm() {
           control={form.control}
           name="name"
           render={({ field }) => (
-            <FormItem className="grid gap-1 @xl:grid-cols-2 @xl:gap-8">
+            <FormItem className="grid gap-1 @xl:grid-cols-2 @xl:gap-10">
               <div className="space-y-2">
                 <FormLabel>Category Name*</FormLabel>
                 <FormDescription>
@@ -93,7 +93,7 @@ export default function CategoryForm() {
           control={form.control}
           name="slug"
           render={({ field }) => (
-            <FormItem className="grid gap-1 @xl:grid-cols-2 @xl:gap-8">
+            <FormItem className="grid gap-1 @xl:grid-cols-2 @xl:gap-10">
               <div className="space-y-2">
                 <FormLabel>Category Slug*</FormLabel>
                 <FormDescription>
@@ -120,7 +120,7 @@ export default function CategoryForm() {
           control={form.control}
           name="image"
           render={({ field }) => (
-            <FormItem className="grid gap-1 @xl:grid-cols-2 @xl:gap-8">
+            <FormItem className="grid gap-1 @xl:grid-cols-2 @xl:gap-10">
               <div className="space-y-2">
                 <FormLabel>Category Image*</FormLabel>
                 <FormDescription>
@@ -143,7 +143,7 @@ export default function CategoryForm() {
           control={form.control}
           name="description"
           render={({ field }) => (
-            <FormItem className="grid gap-1 @xl:grid-cols-2 @xl:gap-8">
+            <FormItem className="grid gap-1 @xl:grid-cols-2 @xl:gap-10">
               <div className="space-y-2">
                 <FormLabel>Category Description</FormLabel>
                 <FormDescription>
