@@ -10,7 +10,6 @@ const categoryAttribute = z.object({
 export const createCategorySchema = z.object({
   name: z.string().trim().min(1, { message: "Name is required" }),
   slug: z.string().trim().min(1, { message: "Slug is required" }),
-  image: z.string().trim().min(1, { message: "Image is required" }),
   description: z.string().trim().optional(),
   attributes: z.array(categoryAttribute).min(1),
 });

@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { getCategories } from "@/server/queries/categories";
 import CategoryActions from "./_components/category-actions";
 import PageTitle from "../_components/page-title";
-import Image from "next/image";
 import Link from "next/link";
 
 export default async function AdminCategoriesPage() {
@@ -26,13 +25,6 @@ export default async function AdminCategoriesPage() {
             className="flex items-center justify-between gap-2 [&:not(:last-of-type)]:border-b [&:not(:last-of-type)]:pb-6"
           >
             <div className="flex items-center gap-6">
-              {/* <Image
-                src={category.image}
-                alt=""
-                width={80}
-                height={80}
-                className="rounded"
-              /> */}
               <div>
                 <h3 className="mb-1 font-semibold">{category.name}</h3>
                 <p className="text-foreground-muted mb-2 text-xs">

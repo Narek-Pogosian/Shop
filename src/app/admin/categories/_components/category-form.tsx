@@ -30,7 +30,6 @@ export default function CategoryForm() {
     defaultValues: {
       name: "",
       slug: "",
-      image: "",
       description: "",
       attributes: [{ name: "", values: ["Attribute Value"] }],
     },
@@ -108,29 +107,6 @@ export default function CategoryForm() {
                   placeholder="Enter category slug (e.g., my-category)"
                   {...field}
                 />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        <hr />
-
-        {/* Category Image */}
-        <FormField
-          control={form.control}
-          name="image"
-          render={({ field }) => (
-            <FormItem className="grid gap-1 @xl:grid-cols-2 @xl:gap-10">
-              <div className="space-y-2">
-                <FormLabel>Category Image*</FormLabel>
-                <FormDescription>
-                  Upload an image to represent the category visually. This image
-                  will be displayed alongside the category name.
-                </FormDescription>
-                <FormMessage />
-              </div>
-              <FormControl>
-                <Input placeholder="Enter image URL" {...field} />
               </FormControl>
             </FormItem>
           )}

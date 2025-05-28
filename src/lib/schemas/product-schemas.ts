@@ -9,9 +9,8 @@ const productAttribute = z.object({
 export const createProductSchema = z.object({
   name: z.string().trim().min(1, { message: "Name is required" }),
   slug: z.string().trim().min(1, { message: "Slug is required" }),
-  poster: z.string().trim().min(1, { message: "Poster is required" }).url(),
+  poster: z.string().trim().min(1, { message: "Poster is required" }),
   description: z.string().trim().min(1, { message: "Description is required" }),
-  images: z.array(z.string()).optional(),
   productAttributes: z.array(productAttribute).min(1),
   categorySlug: z.string().min(1, { message: "Categery is required" }),
   price: z.coerce

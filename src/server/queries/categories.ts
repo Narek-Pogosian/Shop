@@ -5,11 +5,7 @@ function getCategoryInternal(id: number) {
   return db.category.findFirst({
     where: { id },
     include: {
-      categoryAttributes: {
-        include: {
-          attributeValues: true,
-        },
-      },
+      categoryAttributes: true,
     },
   });
 }

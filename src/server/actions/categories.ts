@@ -22,7 +22,6 @@ export const createCategoryAction = adminActionClient
         data: {
           name: parsedInput.name,
           slug: parsedInput.slug,
-          image: parsedInput.image,
           description: parsedInput.description,
         },
       });
