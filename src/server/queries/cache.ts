@@ -5,6 +5,7 @@ type CacheKey = keyof typeof CACHE_TAGS;
 type ValidTags = CacheKey | `${CacheKey}-${string}`;
 
 export const CACHE_TAGS = {
+  tags: "tags",
   products: "products",
   categories: "categories",
   categoriesWithProductCount: "categoriesWithProductCount",
