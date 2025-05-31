@@ -53,6 +53,7 @@ model Category {
     description        String?
     products           Product[]
     categoryAttributes CategoryAttribute[]
+    categoryTags       CategoryTag[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -72,6 +73,18 @@ model CategoryAttribute {
     updatedAt DateTime @updatedAt
 
     @@index([categoryId])
+}
+
+model CategoryTag {
+    id         Int      @id @default(autoincrement())
+    name       String
+    categoryId Int
+    category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([categoryId, name])
 }
 
 model Cart {
