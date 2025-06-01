@@ -28,6 +28,12 @@ export const createProductAction = adminActionClient
             slug: parsedInput.slug,
             price: parsedInput.price,
             categorySlug: parsedInput.categorySlug,
+            tags: {
+              connectOrCreate: parsedInput.tags.map(({ name }) => ({
+                where: { name },
+                create: { name },
+              })),
+            },
           },
         });
 

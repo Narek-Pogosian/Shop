@@ -1,7 +1,7 @@
 "use client";
 
 import { type getCategories } from "@/server/queries/categories";
-import { useForm, type UseFormReturn } from "react-hook-form";
+import { useFieldArray, useForm, type UseFormReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -27,10 +27,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { createProductAction } from "@/server/actions/products";
+import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
-import { useAction } from "next-safe-action/hooks";
-import { createProductAction } from "@/server/actions/products";
+import { Button } from "@/components/ui/button";
+import { Trash2, X } from "lucide-react";
 
 interface ProductFormProps {
   categories: Awaited<ReturnType<typeof getCategories>>;
@@ -49,6 +51,15 @@ export default function ProductForm({ categories }: ProductFormProps) {
       productAttributes: [{ name: "", values: [] }],
       tags: [{ name: "" }],
     },
+  });
+
+  const {
+    fields: tagFields,
+    append: addTag,
+    remove: removeTag,
+  } = useFieldArray({
+    control: form.control,
+    name: "tags",
   });
 
   const { executeAsync, isPending } = useAction(createProductAction);
@@ -95,9 +106,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
             </FormItem>
           )}
         />
-
         <hr />
-
         <FormField
           control={form.control}
           name="slug"
@@ -121,9 +130,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
             </FormItem>
           )}
         />
-
         <hr />
-
         <FormField
           control={form.control}
           name="price"
@@ -143,9 +150,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
             </FormItem>
           )}
         />
-
         <hr />
-
         <FormField
           control={form.control}
           name="poster"
@@ -165,9 +170,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
             </FormItem>
           )}
         />
-
         <hr />
-
         <FormField
           control={form.control}
           name="description"
@@ -192,10 +195,40 @@ export default function ProductForm({ categories }: ProductFormProps) {
             </FormItem>
           )}
         />
-
         <hr />
-
         <CategoryAndAttributes categories={categories} form={form} />
+        <hr />
+        <div className="max-w-md space-y-2">
+          <Label className="block text-sm font-medium">Tags</Label>
+          {tagFields.map((field, index) => (
+            <div key={field.id} className="flex items-center gap-2">
+              <FormField
+                control={form.control}
+                name={`tags.${index}.name`}
+                render={({ field }) => (
+                  <FormControl>
+                    <Input placeholder="Tag" {...field} />
+                  </FormControl>
+                )}
+              />
+              <Button
+                type="button"
+                size="icon"
+                variant="outline"
+                onClick={() => removeTag(index)}
+              >
+                <Trash2 />
+              </Button>
+            </div>
+          ))}
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => addTag({ name: "" })}
+          >
+            Add Tag
+          </Button>
+        </div>
 
         <LoadingButton loading={isPending}>Create Product</LoadingButton>
       </form>

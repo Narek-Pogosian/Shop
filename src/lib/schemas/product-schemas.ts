@@ -2,7 +2,7 @@ import { parseAttributes } from "@/lib/utils";
 import { z } from "zod";
 
 const productAttribute = z.object({
-  name: z.string(),
+  name: z.string().trim().min(1),
   values: z.array(z.string()).min(1),
 });
 
@@ -12,7 +12,7 @@ export const createProductSchema = z.object({
   poster: z.string().trim().min(1, { message: "Poster is required" }),
   description: z.string().trim().min(1, { message: "Description is required" }),
   productAttributes: z.array(productAttribute).min(1),
-  tags: z.array(z.object({ name: z.string() })),
+  tags: z.array(z.object({ name: z.string().trim().min(1) })),
   categorySlug: z.string().min(1, { message: "Categery is required" }),
   price: z.coerce
     .number()

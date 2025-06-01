@@ -11,20 +11,19 @@ model Product {
     id           Int     @id @default(autoincrement())
     name         String
     slug         String  @unique
-    price        Decimal
+    price        Float
     description  String
     isFeatured   Boolean @default(false)
-    rating       Decimal @default(0)
+    rating       Float   @default(0)
     poster       String
     searchVector String?
 
-    categorySlug        String
-    category            Category              @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)
-    reviews             Review[]
-    productAttributes   ProductAttribute[]
-    cartItems           CartItem[]
-    tags                ProductTag[]
-    productTagOnProduct ProductTagOnProduct[]
+    categorySlug      String
+    category          Category           @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)
+    reviews           Review[]
+    productAttributes ProductAttribute[]
+    cartItems         CartItem[]
+    tags              ProductTag[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -36,23 +35,12 @@ model Product {
 }
 
 model ProductTag {
-    id                  Int                   @id @default(autoincrement())
-    name                String                @unique
-    products            Product[]
-    createdAt           DateTime              @default(now())
-    ProductTagOnProduct ProductTagOnProduct[]
+    id        Int       @id @default(autoincrement())
+    name      String    @unique
+    products  Product[]
+    createdAt DateTime  @default(now())
 
     @@index([name])
-}
-
-model ProductTagOnProduct {
-    productId Int
-    tagId     Int
-
-    product Product    @relation(fields: [productId], references: [id])
-    tag     ProductTag @relation(fields: [tagId], references: [id])
-
-    @@id([productId, tagId])
 }
 
 model ProductAttribute {
