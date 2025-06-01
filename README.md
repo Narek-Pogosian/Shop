@@ -1,7 +1,6 @@
-### TODO:
+- Add tags field array on product form
 
-- [ ] Add products to db via admin
-- [ ] Update products table in neon console
+Update products table in neon console
 
 ```sql
 -- Add a tsvector column for full-text search

@@ -46,8 +46,8 @@ export default function ProductForm({ categories }: ProductFormProps) {
       poster: "",
       description: "",
       categorySlug: "" as unknown as string,
-      images: [""],
       productAttributes: [{ name: "", values: [] }],
+      tags: [{ name: "" }],
     },
   });
 

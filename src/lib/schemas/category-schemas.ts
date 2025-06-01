@@ -12,7 +12,6 @@ export const createCategorySchema = z.object({
   slug: z.string().trim().min(1, { message: "Slug is required" }),
   description: z.string().trim().optional(),
   attributes: z.array(categoryAttribute).min(1),
-  tags: z.array(z.object({ name: z.string().min(1) })),
 });
 
 export type CreateCategorySchemaType = z.infer<typeof createCategorySchema>;

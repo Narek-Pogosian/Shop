@@ -31,8 +31,7 @@ export default function CategoryForm() {
       name: "",
       slug: "",
       description: "",
-      attributes: [{ name: "", values: [""] }],
-      tags: [{ name: "" }],
+      attributes: [{ name: "", values: [" "] }],
     },
   });
 
@@ -45,25 +44,15 @@ export default function CategoryForm() {
     name: "attributes",
   });
 
-  const {
-    fields: tagFields,
-    append: appendTag,
-    remove: removeTag,
-  } = useFieldArray({
-    control: form.control,
-    name: "tags",
-  });
-
   const { executeAsync, isPending } = useAction(createCategoryAction);
 
   async function onSubmit(vals: CreateCategorySchemaType) {
-    console.log(vals);
-    // if (isPending) return;
+    if (isPending) return;
 
-    // const res = await executeAsync(vals);
-    // if (res) {
-    //   form.reset();
-    // }
+    const res = await executeAsync(vals);
+    if (res) {
+      form.reset();
+    }
   }
 
   return (
@@ -180,62 +169,9 @@ export default function CategoryForm() {
             type="button"
             variant="outline"
             className="-mt-2 block"
-            onClick={() =>
-              addAtttribute({ name: "", values: ["Attribute Value"] })
-            }
+            onClick={() => addAtttribute({ name: "", values: [""] })}
           >
             Add Attribute
-          </Button>
-        </div>
-
-        <hr />
-
-        <div>
-          <div className="mb-8 space-y-2">
-            <FormLabel>Tags</FormLabel>
-            <FormDescription className="text-balance">
-              Tags help categorize and search for categories more efficiently.
-              Add as many tags as you'd like.
-            </FormDescription>
-          </div>
-
-          <ul className="mb-4 max-w-md space-y-4">
-            {tagFields.map((tag, index) => (
-              <FormField
-                key={tag.id}
-                control={form.control}
-                name={`tags.${index}.name`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="sr-only">Tag</FormLabel>
-                    <div className="flex gap-2">
-                      <FormControl>
-                        <Input placeholder="Enter tag" {...field} />
-                      </FormControl>
-                      <Button
-                        type="button"
-                        size="icon"
-                        variant="outline"
-                        onClick={() => removeTag(index)}
-                      >
-                        <span className="sr-only">Remove Tag</span>
-                        <Trash2 className="!size-4" />
-                      </Button>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            ))}
-          </ul>
-
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onClick={() => appendTag({ name: "" })}
-          >
-            Add Tag
           </Button>
         </div>
 

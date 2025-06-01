@@ -127,6 +127,9 @@ async function discoverProductsInternal(queryOptions: ProductQueryParamsType) {
     skip,
     take,
     orderBy,
+    include: {
+      tags: true,
+    },
   });
 
   return Promise.all([totalCountPromise, productsPromise]).then(

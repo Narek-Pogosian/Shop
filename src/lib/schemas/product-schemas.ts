@@ -12,6 +12,7 @@ export const createProductSchema = z.object({
   poster: z.string().trim().min(1, { message: "Poster is required" }),
   description: z.string().trim().min(1, { message: "Description is required" }),
   productAttributes: z.array(productAttribute).min(1),
+  tags: z.array(z.object({ name: z.string() })),
   categorySlug: z.string().min(1, { message: "Categery is required" }),
   price: z.coerce
     .number()

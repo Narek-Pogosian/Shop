@@ -1,17 +1,16 @@
 import { db } from "../db";
 import { dbCache } from "./cache";
 
-function getTagsInternal(categoryId: number) {
-  return db.categoryTag.findMany({
+function getTagsInternal() {
+  return db.productTag.findMany({
     orderBy: { name: "asc" },
-    where: { categoryId },
   });
 }
 
-export async function getTags(categoryId: number) {
+export async function getTags() {
   const cacheFunc = dbCache(getTagsInternal, {
-    tags: [`tags-${categoryId}`],
+    tags: ["tags"],
   });
 
-  return cacheFunc(categoryId);
+  return cacheFunc();
 }
