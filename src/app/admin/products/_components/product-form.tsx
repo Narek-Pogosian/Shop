@@ -222,6 +222,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
             </div>
           ))}
           <Button
+            size="sm"
             type="button"
             variant="outline"
             onClick={() => addTag({ name: "" })}
@@ -324,11 +325,12 @@ function CategoryAndAttributes({
             <p className="mb-4 text-sm leading-none font-medium">
               Choose the available attributes for this product:
             </p>
-            {form.getFieldState("productAttributes").error && (
-              <p className="text-danger-500 -mt-2 mb-2 text-xs">
-                Pick atleast 1 option for each attribute
-              </p>
-            )}
+            {form.formState.errors &&
+              form.getFieldState("productAttributes").error && (
+                <p className="text-destructive-text -mt-2 mb-2 text-xs">
+                  Pick atleast 1 option for each attribute
+                </p>
+              )}
             <div className="space-y-6">
               {categoryAttributes.map((attr) => (
                 <div key={attr.id}>
