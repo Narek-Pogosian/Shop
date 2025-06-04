@@ -57,5 +57,6 @@ export const createProductAction = adminActionClient
 
     if (result) {
       revalidateDbCache("products");
+      revalidateDbCache("categoriesWithProductCount");
     }
   });

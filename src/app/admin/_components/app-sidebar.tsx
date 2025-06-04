@@ -1,9 +1,7 @@
-import { type Session } from "next-auth";
 import { Boxes, LayoutDashboard, LayoutGrid } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -12,7 +10,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import AppSidebarFooter from "./app-sidebar-footer";
 import Link from "next/link";
 import Logo from "@/components/logo";
 
@@ -44,7 +41,7 @@ const items = [
   },
 ];
 
-export function AppSidebar({ session }: { session: Session }) {
+export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
@@ -77,13 +74,6 @@ export function AppSidebar({ session }: { session: Session }) {
           </SidebarGroup>
         ))}
       </SidebarContent>
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <AppSidebarFooter session={session} />
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
     </Sidebar>
   );
 }
