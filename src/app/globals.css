@@ -147,7 +147,7 @@
 
 @layer utilities {
   .container {
-    max-inline-size: 1240px;
+    max-inline-size: 1180px;
     margin-inline: auto;
     padding-inline: 0.5rem;
   }

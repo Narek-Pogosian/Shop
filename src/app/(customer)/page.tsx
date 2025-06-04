@@ -1,11 +1,27 @@
+import ProductList from "@/components/products/product-list";
+import { productQueryParams } from "@/lib/schemas/product-schemas";
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
-import ProductList from "./_components/product-list";
 
-export default async function ShopPage() {
+type SearchParams = Promise<Record<string, string | string[] | undefined>>;
+
+export default async function ShopPage({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  const search = await searchParams;
+
+  const { data, success } = productQueryParams.safeParse(search);
+
+  if (!success) {
+    return redirect("/");
+  }
+
   return (
     <>
       <Suspense>
-        <ProductList />
+        <ProductList searchParams={data} />
       </Suspense>
     </>
   );

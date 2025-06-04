@@ -3,12 +3,16 @@ import { discoverProducts } from "@/server/queries/products";
 import { formatPrice } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Luggage } from "lucide-react";
-// import ProductPagination from "./product-pagination";
+import ProductPagination from "./pagination";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function ProductList() {
-  const res = await discoverProducts({});
+export default async function ProductList({
+  searchParams,
+}: {
+  searchParams: ProductQueryParamsType;
+}) {
+  const res = await discoverProducts(searchParams);
 
   if (res.products.length === 0) {
     return (
@@ -26,7 +30,7 @@ export default async function ProductList() {
 
   return (
     <section aria-label="products">
-      <ul className="grid w-full grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
+      <ul className="grid w-full grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
         {res.products.map((product) => (
           <li key={product.id} className="relative">
             <div className="relative mb-2 aspect-[3/4]">
@@ -54,12 +58,12 @@ export default async function ProductList() {
         ))}
       </ul>
 
-      {/* {res.totalPages > 1 && (
+      {res.totalPages > 1 && (
         <ProductPagination
           currentPage={res.currentPage}
           totalPages={res.totalPages}
         />
-      )} */}
+      )}
     </section>
   );
 }
