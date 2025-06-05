@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
   Pagination,
@@ -10,6 +9,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { useUpdateParams } from "@/hooks/use-update-params";
 
 export default function ProductPagination({
   currentPage,
@@ -18,16 +18,13 @@ export default function ProductPagination({
   totalPages: number;
   currentPage: number;
 }) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const { params, updateParams } = useUpdateParams();
 
   function changePage(p: number) {
     if (p < 1 || p > totalPages) return;
 
-    const params = new URLSearchParams(searchParams.toString());
     params.set("page", p.toString());
-
-    router.push(`?${params.toString()}`);
+    updateParams(params);
   }
 
   return (
