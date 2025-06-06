@@ -1,4 +1,6 @@
-import ProductList from "@/components/products/product-list";
+import ProductList, {
+  ProductsSkeleton,
+} from "@/components/products/product-list";
 import { productQueryParams } from "@/lib/schemas/product-schemas";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
@@ -20,7 +22,10 @@ export default async function ShopPage({
 
   return (
     <>
-      <Suspense>
+      <Suspense
+        key={Object.values(data).join("")}
+        fallback={<ProductsSkeleton />}
+      >
         <ProductList searchParams={data} />
       </Suspense>
     </>

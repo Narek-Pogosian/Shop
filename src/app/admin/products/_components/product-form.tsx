@@ -32,7 +32,7 @@ import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Trash2, X } from "lucide-react";
+import { Trash2 } from "lucide-react";
 
 interface ProductFormProps {
   categories: Awaited<ReturnType<typeof getCategories>>;
@@ -195,9 +195,11 @@ export default function ProductForm({ categories }: ProductFormProps) {
             </FormItem>
           )}
         />
+
         <hr />
         <CategoryAndAttributes categories={categories} form={form} />
         <hr />
+
         <div className="max-w-md space-y-2">
           <Label className="block text-sm font-medium">Tags</Label>
           {tagFields.map((field, index) => (

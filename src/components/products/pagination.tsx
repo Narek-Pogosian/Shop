@@ -23,7 +23,12 @@ export default function ProductPagination({
   function changePage(p: number) {
     if (p < 1 || p > totalPages) return;
 
-    params.set("page", p.toString());
+    if (p === 1) {
+      params.delete("page");
+    } else {
+      params.set("page", p.toString());
+    }
+
     updateParams(params);
   }
 
