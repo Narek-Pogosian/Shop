@@ -9,11 +9,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { LoadingButton } from "@/components/ui/loading-button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 import { Input } from "@/components/ui/input";
 
@@ -81,9 +81,9 @@ function LoginForm() {
           </p>
         )}
 
-        <LoadingButton loading={isLoading} type="submit">
+        <Button loading={isLoading} type="submit">
           Login
-        </LoadingButton>
+        </Button>
       </form>
     </Form>
   );

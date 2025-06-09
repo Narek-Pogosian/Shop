@@ -21,7 +21,6 @@ import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import { slugify } from "@/lib/utils";
 import { useAction } from "next-safe-action/hooks";
-import { LoadingButton } from "@/components/ui/loading-button";
 import { createCategoryAction } from "@/server/actions/categories";
 
 export default function CategoryForm() {
@@ -175,7 +174,7 @@ export default function CategoryForm() {
           </Button>
         </div>
 
-        <LoadingButton loading={isPending}>Create Category</LoadingButton>
+        <Button loading={isPending}>Create Category</Button>
       </form>
     </Form>
   );

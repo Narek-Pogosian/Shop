@@ -8,15 +8,14 @@ datasource db {
 }
 
 model Product {
-    id           Int     @id @default(autoincrement())
-    name         String
-    slug         String  @unique
-    price        Float
-    description  String
-    isFeatured   Boolean @default(false)
-    rating       Float   @default(0)
-    poster       String
-    searchVector String?
+    id          Int     @id @default(autoincrement())
+    name        String
+    slug        String  @unique
+    price       Float
+    description String
+    isFeatured  Boolean @default(false)
+    rating      Float   @default(0)
+    poster      String
 
     categorySlug      String
     category          Category           @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)

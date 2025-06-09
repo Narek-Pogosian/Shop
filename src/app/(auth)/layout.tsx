@@ -5,7 +5,7 @@ import Link from "next/link";
 function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative min-h-full content-center px-4 lg:col-span-2">
-      <Button variant="ghost" className="border" asChild>
+      <Button variant="outline" asChild>
         <Link href="/" className="absolute top-4 left-4 lg:top-8 lg:left-8">
           <MoveLeft />
           Shop

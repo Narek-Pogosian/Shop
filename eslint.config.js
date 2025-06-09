@@ -34,6 +34,7 @@ export default tseslint.config(
         { checksVoidReturn: { attributes: false } },
       ],
       "@typescript-eslint/no-base-to-string": "off",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
     },
   },
   {

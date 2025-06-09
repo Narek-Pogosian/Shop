@@ -1,7 +1,6 @@
 "use client";
 
-import { buttonVariants } from "@/components/ui/button";
-import { LoadingButton } from "@/components/ui/loading-button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { Trash2 } from "lucide-react";
@@ -57,13 +56,13 @@ function ProductDeleteDialog({ id }: { id: number }) {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <LoadingButton
+          <Button
             loading={isPending}
             variant="destructive"
             onClick={handleDelete}
           >
             Delete
-          </LoadingButton>
+          </Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

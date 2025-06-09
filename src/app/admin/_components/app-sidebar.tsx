@@ -1,17 +1,7 @@
 import { Boxes, LayoutDashboard, LayoutGrid } from "lucide-react";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import Link from "next/link";
 import Logo from "@/components/logo";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const items = [
   {
@@ -43,37 +33,35 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar>
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <Link href="/" className="block px-2 pt-2 font-semibold">
-              <Logo />
-            </Link>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader>
-      <SidebarContent>
+    <div className="sticky top-0 left-0 h-screen w-64 shrink-0 border-r p-2">
+      <Link href="/" className="mb-4 block px-2 pt-2 font-semibold">
+        <Logo />
+      </Link>
+      <div>
         {items.map((item) => (
-          <SidebarGroup key={item.title}>
-            <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {item.items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <Link href={item.url}>
-                        <item.icon />
-                        {item.title}
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
+          <div key={item.title} className="mb-4">
+            <span className="text-foreground-muted mb-1 block text-xs font-semibold">
+              {item.title}
+            </span>
+            <div>
+              {item.items.map((item) => (
+                <div key={item.title}>
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start"
+                    asChild
+                  >
+                    <Link href={item.url}>
+                      <item.icon />
+                      {item.title}
+                    </Link>
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </div>
         ))}
-      </SidebarContent>
-    </Sidebar>
+      </div>
+    </div>
   );
 }

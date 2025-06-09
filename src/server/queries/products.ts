@@ -52,7 +52,6 @@ async function discoverProductsInternal(queryOptions: ProductQueryParamsType) {
     page = 1,
     sort_by = "createdAt",
     dir = "desc",
-    query,
     attributes,
   } = queryOptions;
 
@@ -65,18 +64,7 @@ async function discoverProductsInternal(queryOptions: ProductQueryParamsType) {
     rating?: {
       gte?: number;
     };
-    name?: {
-      contains?: string;
-      mode?: "insensitive";
-    };
   } = {};
-
-  if (query !== undefined) {
-    where.name = {
-      contains: query,
-      mode: "insensitive",
-    };
-  }
 
   if (category !== undefined) {
     where.categorySlug = category;

@@ -16,7 +16,6 @@ import {
   createProductSchema,
   type CreateProductsSchemaType,
 } from "@/lib/schemas/product-schemas";
-import { LoadingButton } from "@/components/ui/loading-button";
 import { Textarea } from "@/components/ui/textarea";
 import { slugify } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
@@ -233,7 +232,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
           </Button>
         </div>
 
-        <LoadingButton loading={isPending}>Create Product</LoadingButton>
+        <Button loading={isPending}>Create Product</Button>
       </form>
     </Form>
   );

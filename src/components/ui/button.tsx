@@ -1,9 +1,10 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { Slot } from "@radix-ui/react-slot";
+import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cn } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
 
 const buttonVariants = cva(
-  "inline-flex items-center gap-2 justify-center cursor-pointer whitespace-nowrap rounded text-sm font-semibold transition-[color,box-shadow,background-color] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-5 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/70 focus-visible:ring-2",
+  "inline-flex items-center gap-2 justify-center cursor-pointer whitespace-nowrap rounded text-sm font-semibold transition-[color,box-shadow,background-color] disabled:pointer-events-none disabled:opacity-70 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-5 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/70 focus-visible:ring-2",
   {
     variants: {
       variant: {
@@ -15,7 +16,8 @@ const buttonVariants = cva(
         secondary:
           "bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15",
         ghost: "hover:bg-black/10 dark:hover:bg-white/10",
-        outline: "hover:bg-black/10 dark:hover:bg-white/10 border",
+        outline:
+          "hover:bg-black/10 shadow dark:shadow-black dark:hover:bg-white/10 border-1",
         link: "text-primary-primary underline-offset-4 hover:underline",
       },
       size: {
@@ -34,6 +36,9 @@ const buttonVariants = cva(
 
 function Button({
   className,
+  children,
+  disabled,
+  loading,
   variant,
   size,
   asChild = false,
@@ -41,6 +46,7 @@ function Button({
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
+    loading?: boolean;
   }) {
   const Comp = asChild ? Slot : "button";
 
@@ -48,8 +54,12 @@ function Button({
     <Comp
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
+      disabled={loading || disabled}
       {...props}
-    />
+    >
+      {loading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
+      <Slottable>{children}</Slottable>
+    </Comp>
   );
 }
 
