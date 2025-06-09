@@ -10,9 +10,9 @@
 }
 
 :root {
-  --accent: hsl(180, 45%, 30%);
-  --accent-text: hsl(180, 48%, 23%);
-  --accent-foreground: hsl(0, 100%, 100%);
+  --accent: hsl(192.9 82.3% 31%);
+  --accent-text: hsl(194.4 69.6% 27.1%);
+  --accent-foreground: hsl(0, 0%, 100%);
 
   --primary: hsl(240 5.9% 16%);
   --primary-foreground: hsl(0 0% 98%);
@@ -24,7 +24,7 @@
   --background: hsl(240, 20%, 96.5%);
   --background-card: hsl(0, 0%, 100%);
   --background-popover: hsl(0, 0%, 100%);
-  --background-popover-focus: hsl(0, 0%, 95%);
+  --background-popover-focus: hsl(0, 0%, 93%);
 
   --foreground: hsl(240, 2%, 10%);
   --foreground-muted: hsl(240, 2%, 35%);
@@ -35,34 +35,34 @@
   --input-border: hsl(240, 12%, 87.5%);
 
   --scrollbar: hsl(240, 8%, 82%);
-  --border: hsl(240, 6%, 90%);
+  --border: hsl(240, 6%, 87%);
   --ring: hsl(0, 0%, 0%);
 
   --radius: 6px;
 }
 
 .dark {
-  --accent-text: hsl(180, 48%, 46%);
+  --accent-text: hsl(187.9 85.7% 53.3%);
   --destructive-text: hsl(0, 80%, 68%);
 
   --primary: hsl(0 0% 98%);
   --primary-foreground: hsl(240 5.9% 10%);
 
-  --background: hsl(240, 4%, 8%);
-  --background-card: hsl(240, 4%, 10%);
-  --background-popover: hsl(240, 4%, 8.5%);
-  --background-popover-focus: hsl(240, 4%, 14.5%);
+  --background: hsl(240, 2%, 7%);
+  --background-card: hsl(240, 2%, 9.5%);
+  --background-popover: hsl(240, 2%, 8.5%);
+  --background-popover-focus: hsl(240, 2%, 18.5%);
 
-  --foreground: hsl(240, 4%, 98%);
-  --foreground-muted: hsl(240, 4%, 70%);
+  --foreground: hsl(240, 2%, 98%);
+  --foreground-muted: hsl(240, 2%, 70%);
 
-  --input-background: hsl(240, 4%, 12%);
-  --input-foreground: hsl(240, 4%, 98%);
-  --input-placeholder: hsl(240, 4%, 65%);
-  --input-border: hsl(240, 4%, 18%);
+  --input-background: hsl(240, 2%, 12%);
+  --input-foreground: hsl(240, 2%, 98%);
+  --input-placeholder: hsl(240, 2%, 65%);
+  --input-border: hsl(240, 2%, 20%);
 
-  --scrollbar: hsl(240, 4%, 22%);
-  --border: hsl(240, 4%, 16%);
+  --scrollbar: hsl(240, 2%, 22%);
+  --border: hsl(240, 2%, 20%);
   --ring: hsl(0, 0%, 100%);
 }
 

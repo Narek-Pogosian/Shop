@@ -9,7 +9,7 @@ export default async function Header() {
   const session = await getServerAuthSession();
 
   return (
-    <header>
+    <header className="bg-background sticky top-0 left-0 z-50 mb-2">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6 md:gap-10">
           <Link href="/">

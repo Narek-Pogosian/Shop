@@ -4,20 +4,19 @@ import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 
 const buttonVariants = cva(
-  "inline-flex items-center gap-2 justify-center cursor-pointer whitespace-nowrap rounded text-sm font-semibold transition-[color,box-shadow,background-color] disabled:pointer-events-none disabled:opacity-70 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-5 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/70 focus-visible:ring-2",
+  "inline-flex items-center gap-2 justify-center whitespace-nowrap rounded text-sm font-semibold transition-[color,box-shadow,background-color] disabled:pointer-events-none disabled:opacity-70 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-5 shrink-0 [&_svg]:shrink-0 outline-none  focus-visible:ring-ring/70 focus-visible:ring-2",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:border-primary focus-visible:ring-primary/70 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          "bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-primary/70 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         accent: "bg-accent text-accent-foreground hover:bg-accent/90",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         secondary:
           "bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15",
         ghost: "hover:bg-black/10 dark:hover:bg-white/10",
-        outline:
-          "hover:bg-black/10 shadow dark:shadow-black dark:hover:bg-white/10 border-1",
+        outline: "hover:bg-black/10 k dark:hover:bg-white/10 border-[1.5px]",
         link: "text-primary-primary underline-offset-4 hover:underline",
       },
       size: {

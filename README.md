@@ -1,5 +1,4 @@
 ## TODO
 
-- [ ] do a hide show filters button top to the left and sort on the right
-- [ ] show min and max prices under the range in boxes
-- [ ] maybe descriptive grid option
+- Filters button on the left with categories next it on desktop
+- descriptive grid and sort option on the right side
