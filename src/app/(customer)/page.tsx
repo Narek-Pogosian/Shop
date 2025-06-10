@@ -1,6 +1,7 @@
 import ProductList, {
   ProductsSkeleton,
 } from "@/components/products/product-list";
+import DesktopCategories from "@/components/filters/desktop-categories";
 import Sorting from "@/components/products/sorting";
 import { productQueryParams } from "@/lib/schemas/product-schemas";
 import { Filter, Grid3X3 } from "lucide-react";
@@ -33,14 +34,10 @@ export default async function ShopPage({
           <Button>
             <Filter /> Filters
           </Button>
-          <ul className="flex gap-1 max-lg:hidden">
-            <Button variant="outline">All</Button>
-            {categories.map((c) => (
-              <Button variant="outline" key={c.id}>
-                {c.name}
-              </Button>
-            ))}
-          </ul>
+          <DesktopCategories
+            categories={categories}
+            currentCategory={data.category}
+          />
         </div>
 
         <div className="flex items-center gap-4">

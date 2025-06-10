@@ -35,7 +35,7 @@
   --input-border: hsl(240, 12%, 87.5%);
 
   --scrollbar: hsl(240, 8%, 82%);
-  --border: hsl(240, 6%, 87%);
+  --border: hsl(240, 6%, 89%);
   --ring: hsl(0, 0%, 0%);
 
   --radius: 6px;
@@ -62,7 +62,7 @@
   --input-border: hsl(240, 2%, 20%);
 
   --scrollbar: hsl(240, 2%, 22%);
-  --border: hsl(240, 2%, 20%);
+  --border: hsl(240, 2%, 15%);
   --ring: hsl(0, 0%, 100%);
 }
 
