@@ -7,11 +7,7 @@ function CustomerLayout({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-full flex-col">
       <SkipToMain />
       <Header />
-      <main
-        id="main"
-        tabIndex={-1}
-        className="container grow pt-3 pb-6 outline-none"
-      >
+      <main id="main" tabIndex={-1} className="container grow outline-none">
         {children}
       </main>
       <Footer />

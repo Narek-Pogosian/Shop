@@ -29,7 +29,7 @@ export default function DesktopCategories({
     <div className="flex gap-1 max-lg:hidden">
       <Button
         variant="outline"
-        className={cn({ "bg-black/10 dark:bg-white/10": !currentCategory })}
+        className={cn({ "bg-black/5! dark:bg-white/15!": !currentCategory })}
         aria-pressed={!currentCategory}
         onClick={() => handleCategoryChange(undefined)}
       >
@@ -41,7 +41,7 @@ export default function DesktopCategories({
           key={c.id}
           variant="outline"
           className={cn({
-            "bg-black/10 dark:bg-white/10": currentCategory == c.slug,
+            "bg-black/5! dark:bg-white/15!": currentCategory == c.slug,
           })}
           aria-pressed={currentCategory == c.slug}
           onClick={() => handleCategoryChange(c.slug)}
