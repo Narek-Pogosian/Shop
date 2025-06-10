@@ -1,4 +1,6 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -9,39 +11,90 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import type { Category } from "@prisma/client";
+import type { getCategories } from "@/server/queries/categories";
+import { useReducer, useState } from "react";
+import { useUpdateParams } from "@/hooks/use-update-params";
+import { filterReducer } from "./filter-reducer";
 import { Filter } from "lucide-react";
+import PriceSlider from "./price";
+import CategoryFilter from "./categories";
 
-export default function FiltersDialog({
-  categories,
-}: {
-  categories: Category[];
-}) {
+interface Props {
+  categories: Awaited<ReturnType<typeof getCategories>>;
+}
+
+export default function FiltersDialog({ categories }: Props) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button className="px-4!">
-          <Filter /> Filters
-        </Button>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger className={buttonVariants()}>
+        <Filter /> Filters
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-2xl">
+      <DialogContent className="p-8 sm:max-w-xl">
         <DialogHeader>
           <DialogTitle>Filters</DialogTitle>
-          <DialogDescription>TODO</DialogDescription>
+          <DialogDescription></DialogDescription>
         </DialogHeader>
 
-        <pre>{JSON.stringify(categories, null, 2)}</pre>
-
-        <DialogFooter>
-          <Button size="sm">Save changes</Button>
-          <DialogClose asChild>
-            <Button variant="outline" size="sm">
-              Cancel
-            </Button>
-          </DialogClose>
-        </DialogFooter>
+        <Filters categories={categories} setOpen={setOpen} />
       </DialogContent>
     </Dialog>
+  );
+}
+
+function Filters({
+  categories,
+  setOpen,
+}: Props & { setOpen: (b: boolean) => void }) {
+  const { params, updateParams } = useUpdateParams();
+
+  const [state, dispatch] = useReducer(filterReducer, {
+    category: params.get("category") ?? undefined,
+    min_rating: Number(params.get("min_rating")) || undefined,
+    min_price: Number(params.get("min_price")) || undefined,
+    max_price: Number(params.get("max_price")) || undefined,
+  });
+
+  function handleSubmit() {
+    Object.entries(state).map(([key, value]) => {
+      if (value) {
+        params.set(key, String(value));
+      } else {
+        params.delete(key);
+      }
+    });
+
+    params.delete("page");
+    updateParams(params);
+    setOpen(false);
+  }
+
+  return (
+    <div className="grid gap-8">
+      <CategoryFilter
+        categories={categories}
+        category={state.category}
+        dispatch={dispatch}
+      />
+
+      <PriceSlider
+        dispatch={dispatch}
+        min_price={state.min_price}
+        max_price={state.max_price}
+      />
+
+      <DialogFooter className="mt-4">
+        <Button size="sm" onClick={handleSubmit}>
+          Save changes
+        </Button>
+        <DialogClose asChild>
+          <Button variant="outline" size="sm">
+            Cancel
+          </Button>
+        </DialogClose>
+      </DialogFooter>
+    </div>
   );
 }

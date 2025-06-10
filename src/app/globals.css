@@ -56,7 +56,7 @@
   --foreground: hsl(240, 2%, 98%);
   --foreground-muted: hsl(240, 2%, 70%);
 
-  --input-background: hsl(240, 2%, 12%);
+  --input-background: hsl(240, 4%, 11%);
   --input-foreground: hsl(240, 2%, 98%);
   --input-placeholder: hsl(240, 2%, 65%);
   --input-border: hsl(240, 2%, 20%);
