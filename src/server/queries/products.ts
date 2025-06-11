@@ -134,7 +134,7 @@ async function discoverProductsInternal(queryOptions: ProductQueryParamsType) {
 
 export async function discoverProducts(queryOptions: ProductQueryParamsType) {
   if (
-    queryOptions.query ||
+    queryOptions.min_rating ||
     queryOptions.max_price ||
     queryOptions.min_price ||
     queryOptions.attributes

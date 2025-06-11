@@ -18,6 +18,7 @@ import { filterReducer } from "./filter-reducer";
 import { Filter } from "lucide-react";
 import PriceSlider from "./price";
 import CategoryFilter from "./categories";
+import Rating from "./rating";
 
 interface Props {
   categories: Awaited<ReturnType<typeof getCategories>>;
@@ -32,7 +33,7 @@ export default function FiltersDialog({ categories }: Props) {
         <Filter /> Filters
       </DialogTrigger>
 
-      <DialogContent className="p-8 sm:max-w-xl">
+      <DialogContent>
         <DialogHeader>
           <DialogTitle>Filters</DialogTitle>
           <DialogDescription></DialogDescription>
@@ -72,7 +73,7 @@ function Filters({
   }
 
   return (
-    <div className="grid gap-8">
+    <div className="grid gap-7">
       <CategoryFilter
         categories={categories}
         category={state.category}
@@ -85,9 +86,11 @@ function Filters({
         max_price={state.max_price}
       />
 
+      <Rating rating={state.min_rating} dispatch={dispatch} />
+
       <DialogFooter className="mt-4">
         <Button size="sm" onClick={handleSubmit}>
-          Save changes
+          Save Filters
         </Button>
         <DialogClose asChild>
           <Button variant="outline" size="sm">

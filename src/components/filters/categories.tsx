@@ -22,13 +22,14 @@ export default function CategoryFilter({
     <div>
       <h3
         id="categories"
-        className="text-foreground-muted mb-2 border-b pb-2 text-xs font-semibold tracking-wider uppercase"
+        className="text-foreground-muted mb-1 text-xs font-semibold tracking-wider uppercase"
       >
         Category
       </h3>
-      <div className="flex gap-2 max-lg:hidden">
+      <div className="flex flex-wrap gap-2">
         <Button
           variant="outline"
+          size="sm"
           className={cn({ "bg-primary! text-primary-foreground!": !category })}
           aria-pressed={!category}
           onClick={() => handleCategoryChange(undefined)}
@@ -39,6 +40,7 @@ export default function CategoryFilter({
           <Button
             key={c.id}
             variant="outline"
+            size="sm"
             className={cn({
               "bg-primary! text-primary-foreground!": category == c.slug,
             })}

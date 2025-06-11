@@ -23,7 +23,6 @@ export const createProductSchema = z.object({
 });
 
 export const productQueryParams = z.object({
-  query: z.string().optional(),
   category: z.string().optional(),
   min_price: z.coerce.number().gte(0).optional(),
   max_price: z.coerce.number().gte(0).optional(),

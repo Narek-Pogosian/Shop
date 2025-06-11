@@ -14,7 +14,7 @@ interface Props {
 function PriceSlider({ dispatch, min_price, max_price }: Props) {
   return (
     <div className="price-slider">
-      <h3 className="text-foreground-muted mb-2 border-b pb-2 text-xs font-semibold tracking-wider uppercase">
+      <h3 className="text-foreground-muted mb-1 text-xs font-semibold tracking-wider uppercase">
         Price Range
       </h3>
 
