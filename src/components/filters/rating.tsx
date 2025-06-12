@@ -8,7 +8,7 @@ interface Props {
 
 export default function Rating({ rating, dispatch }: Props) {
   function handleChange(val: number) {
-    dispatch({ type: "EDIT_MIN_RATING", payload: val });
+    dispatch({ type: "SET_MIN_RATING", payload: val });
   }
 
   return (

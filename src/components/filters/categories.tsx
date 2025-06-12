@@ -15,7 +15,7 @@ export default function CategoryFilter({
   dispatch,
 }: Props) {
   function handleCategoryChange(category?: string) {
-    dispatch({ type: "EDIT_CATEGORY", payload: category });
+    dispatch({ type: "SET_CATEGORY", payload: category });
   }
 
   return (

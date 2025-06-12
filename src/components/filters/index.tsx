@@ -11,20 +11,28 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import type { getCategories } from "@/server/queries/categories";
 import { useReducer, useState } from "react";
+import {
+  decodeAttributes,
+  encodeAttributes,
+  getNumberFromParams,
+} from "@/lib/utils/params";
+import { type getCategories } from "@/server/queries/categories";
 import { useUpdateParams } from "@/hooks/use-update-params";
 import { filterReducer } from "./filter-reducer";
+import { type getTags } from "@/server/queries/tags";
 import { Filter } from "lucide-react";
-import PriceSlider from "./price";
+import AttributeFilters from "./attributes";
 import CategoryFilter from "./categories";
+import PriceSlider from "./price";
 import Rating from "./rating";
 
 interface Props {
   categories: Awaited<ReturnType<typeof getCategories>>;
+  tags: Awaited<ReturnType<typeof getTags>>;
 }
 
-export default function FiltersDialog({ categories }: Props) {
+export default function FiltersDialog({ categories, tags }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -34,15 +42,24 @@ export default function FiltersDialog({ categories }: Props) {
       </DialogTrigger>
 
       <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Filters</DialogTitle>
-          <DialogDescription></DialogDescription>
-        </DialogHeader>
-
-        <Filters categories={categories} setOpen={setOpen} />
+        <div className="relative h-full">
+          <DialogHeader>
+            <DialogTitle>Filters</DialogTitle>
+            <DialogDescription></DialogDescription>
+          </DialogHeader>
+          <Wrapper>
+            <Filters categories={categories} tags={tags} setOpen={setOpen} />
+          </Wrapper>
+        </div>
       </DialogContent>
     </Dialog>
   );
+}
+
+function Wrapper({ children }: { children: React.ReactNode }) {
+  const { params } = useUpdateParams();
+
+  return <div key={params.toString()}>{children}</div>;
 }
 
 function Filters({
@@ -53,19 +70,42 @@ function Filters({
 
   const [state, dispatch] = useReducer(filterReducer, {
     category: params.get("category") ?? undefined,
-    min_rating: Number(params.get("min_rating")) || undefined,
-    min_price: Number(params.get("min_price")) || undefined,
-    max_price: Number(params.get("max_price")) || undefined,
+    min_rating: getNumberFromParams("min_rating", params),
+    min_price: getNumberFromParams("min_price", params),
+    max_price: getNumberFromParams("max_price", params),
+    attributes: decodeAttributes(params),
   });
 
   function handleSubmit() {
-    Object.entries(state).map(([key, value]) => {
-      if (value) {
-        params.set(key, String(value));
-      } else {
-        params.delete(key);
-      }
-    });
+    if (state.attributes.length > 0) {
+      encodeAttributes(state.attributes, params);
+    } else {
+      params.delete("attributes");
+    }
+
+    if (state.category) {
+      params.set("category", state.category);
+    } else {
+      params.delete("category");
+    }
+
+    if (state.min_rating) {
+      params.set("min_rating", String(state.min_rating));
+    } else {
+      params.delete("min_rating");
+    }
+
+    if (state.min_price) {
+      params.set("min_price", String(state.min_price));
+    } else {
+      params.delete("min_price");
+    }
+
+    if (state.max_price) {
+      params.set("max_price", String(state.max_price));
+    } else {
+      params.delete("max_price");
+    }
 
     params.delete("page");
     updateParams(params);
@@ -73,7 +113,7 @@ function Filters({
   }
 
   return (
-    <div className="grid gap-7">
+    <div className="grid gap-6">
       <CategoryFilter
         categories={categories}
         category={state.category}
@@ -88,7 +128,18 @@ function Filters({
 
       <Rating rating={state.min_rating} dispatch={dispatch} />
 
-      <DialogFooter className="mt-4">
+      {state.category && (
+        <AttributeFilters
+          dispatch={dispatch}
+          selectedAttributes={state.attributes}
+          attributes={
+            categories.find((c) => c.slug === state.category)
+              ?.categoryAttributes ?? []
+          }
+        />
+      )}
+
+      <DialogFooter className="bg-background border-input-border sticky bottom-0 -mt-2 border-t pt-3">
         <Button size="sm" onClick={handleSubmit}>
           Save Filters
         </Button>

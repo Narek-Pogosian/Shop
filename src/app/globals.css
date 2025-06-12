@@ -113,6 +113,10 @@
   body {
     @apply bg-background text-foreground h-full overflow-x-clip overflow-y-scroll;
   }
+
+  [class*="animate-"] {
+    animation-fill-mode: forwards;
+  }
 }
 
 @layer utilities {

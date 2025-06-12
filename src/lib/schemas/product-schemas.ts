@@ -1,4 +1,4 @@
-import { parseAttributes } from "@/lib/utils";
+import { parseAttributes } from "@/lib/utils/params";
 import { z } from "zod";
 
 const productAttribute = z.object({
@@ -30,15 +30,12 @@ export const productQueryParams = z.object({
   page: z.coerce.number().int().gte(1).optional(),
   sort_by: z.string().optional(),
   dir: z.enum(["asc", "desc"]).optional(),
+  tags: z.array(z.string()).optional(),
   attributes: z
     .string()
-    .or(z.array(z.string()))
     .optional()
     .transform((attr) => {
-      if (!attr) return;
-      return (Array.isArray(attr) ? attr : [attr])
-        .map(parseAttributes)
-        .filter((parsed): parsed is Attribute => Boolean(parsed));
+      return attr ? parseAttributes(attr) : undefined;
     }),
 });
 

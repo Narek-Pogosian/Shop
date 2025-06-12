@@ -1,5 +1,5 @@
 import { getProducts } from "@/server/queries/products";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice } from "@/lib/utils/price";
 import { Button } from "@/components/ui/button";
 import ProductActions from "./_components/product-actions";
 import PageTitle from "../_components/page-title";

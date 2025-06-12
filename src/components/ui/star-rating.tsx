@@ -23,13 +23,13 @@ function StarRating({ maxRating = 5, value, onValueChange }: Props) {
   }
 
   return (
-    <div className="flex" tabIndex={0}>
+    <div className="flex w-fit" tabIndex={0}>
       {Array.from({ length: maxRating }, (_, i) => (
         <label
           key={i}
           htmlFor={`star-${i}`}
           className={cn(
-            "border-primary text-primary/20 cursor-pointer px-0.5 text-3xl has-[:focus-visible]:border",
+            "border-primary text-primary/20 cursor-pointer px-0.5 text-2xl has-[:focus-visible]:border",
             {
               "text-amber-500": (value && i < value) || i < hoverValue,
             },

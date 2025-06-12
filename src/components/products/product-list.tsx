@@ -1,6 +1,6 @@
 import { type ProductQueryParamsType } from "@/lib/schemas/product-schemas";
 import { discoverProducts } from "@/server/queries/products";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice } from "@/lib/utils/price";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Luggage } from "lucide-react";
 import ProductPagination from "./pagination";

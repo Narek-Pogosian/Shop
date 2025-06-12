@@ -1,5 +1,5 @@
 import type { FilterDispatch } from "./filter-reducer";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice } from "@/lib/utils/price";
 import { Slider } from "@/components/ui/slider";
 
 const MIN_PRICE = 0;
@@ -34,12 +34,12 @@ function PriceSlider({ dispatch, min_price, max_price }: Props) {
         step={10}
         value={[min_price ?? MIN_PRICE, max_price ?? MAX_PRICE]}
         onValueChange={([newMin, newMax]) => {
-          dispatch({ type: "EDIT_MIN_PRICE", payload: newMin });
+          dispatch({ type: "SET_MIN_PRICE", payload: newMin });
 
           if (newMax && newMax < MAX_PRICE) {
-            dispatch({ type: "EDIT_MAX_PRICE", payload: newMax });
+            dispatch({ type: "SET_MAX_PRICE", payload: newMax });
           } else {
-            dispatch({ type: "EDIT_MAX_PRICE", payload: undefined });
+            dispatch({ type: "SET_MAX_PRICE", payload: undefined });
           }
         }}
       />
