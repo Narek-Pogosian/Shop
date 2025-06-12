@@ -35,6 +35,7 @@ export default tseslint.config(
       ],
       "@typescript-eslint/no-base-to-string": "off",
       "@typescript-eslint/prefer-nullish-coalescing": "off",
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
   {

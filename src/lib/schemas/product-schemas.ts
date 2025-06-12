@@ -30,7 +30,12 @@ export const productQueryParams = z.object({
   page: z.coerce.number().int().gte(1).optional(),
   sort_by: z.string().optional(),
   dir: z.enum(["asc", "desc"]).optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z
+    .string()
+    .optional()
+    .transform((str) => {
+      return str?.split(",").map(Number);
+    }),
   attributes: z
     .string()
     .optional()

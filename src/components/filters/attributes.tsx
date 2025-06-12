@@ -23,10 +23,8 @@ export default function AttributeFilters({
 
   function handleSelect(name: string, value: string) {
     if (isValueIncluded(name, value)) {
-      console.log("Removing", name, value);
       dispatch({ type: "REMOVE_ATTRIBUTE", payload: { name, value } });
     } else {
-      console.log("Adding", name, value);
       dispatch({ type: "ADD_ATTRIBUTE", payload: { name, value } });
     }
   }

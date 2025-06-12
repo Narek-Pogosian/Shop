@@ -1,15 +1,15 @@
 import type { Attribute } from "../schemas/product-schemas";
 
-export function encodeTags(tags: string[], params: URLSearchParams) {
+export function encodeTags(tags: number[], params: URLSearchParams) {
   const encoded = tags.map(encodeURIComponent).join(",");
   params.set("tags", encoded);
 }
 
-export function decodeTags(params: URLSearchParams): string[] {
+export function decodeTags(params: URLSearchParams): number[] {
   const encoded = params.get("tags");
   if (!encoded) return [];
 
-  return encoded.split(",").map(decodeURIComponent);
+  return encoded.split(",").map(decodeURIComponent).map(Number);
 }
 
 export function getNumberFromParams(key: string, params: URLSearchParams) {

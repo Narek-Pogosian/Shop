@@ -7,6 +7,7 @@ export type FilterState = {
   min_price?: number;
   max_price?: number;
   attributes: Attribute[];
+  tags: number[];
 };
 
 type Action =
@@ -16,6 +17,8 @@ type Action =
   | { type: "SET_MAX_PRICE"; payload?: number }
   | { type: "ADD_ATTRIBUTE"; payload: { name: string; value: string } }
   | { type: "REMOVE_ATTRIBUTE"; payload: { name: string; value: string } }
+  | { type: "ADD_TAG"; payload: number }
+  | { type: "REMOVE_TAG"; payload: number }
   | { type: "SET_STATE"; payload: FilterState };
 
 export type FilterDispatch = ActionDispatch<[action: Action]>;
@@ -88,6 +91,12 @@ export function filterReducer(state: FilterState, action: Action): FilterState {
 
       return { ...state, attributes: updatedAttributes };
     }
+
+    case "ADD_TAG":
+      return { ...state, tags: [...state.tags, action.payload] };
+
+    case "REMOVE_TAG":
+      return { ...state, tags: state.tags.filter((t) => t !== action.payload) };
 
     case "SET_STATE":
       return action.payload;

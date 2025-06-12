@@ -53,6 +53,7 @@ async function discoverProductsInternal(queryOptions: ProductQueryParamsType) {
     sort_by = "createdAt",
     dir = "desc",
     attributes,
+    tags,
   } = queryOptions;
 
   const where: {
@@ -64,6 +65,7 @@ async function discoverProductsInternal(queryOptions: ProductQueryParamsType) {
     rating?: {
       gte?: number;
     };
+    tags?: any;
   } = {};
 
   if (category !== undefined) {
@@ -100,6 +102,14 @@ async function discoverProductsInternal(queryOptions: ProductQueryParamsType) {
 
     // @ts-expect-error it works
     where.AND = whereConditions;
+  }
+
+  if (tags) {
+    where.tags = {
+      some: {
+        id: { in: tags },
+      },
+    };
   }
 
   const take = 12;

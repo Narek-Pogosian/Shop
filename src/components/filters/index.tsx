@@ -14,7 +14,9 @@ import {
 import { useReducer, useState } from "react";
 import {
   decodeAttributes,
+  decodeTags,
   encodeAttributes,
+  encodeTags,
   getNumberFromParams,
 } from "@/lib/utils/params";
 import { type getCategories } from "@/server/queries/categories";
@@ -26,6 +28,7 @@ import AttributeFilters from "./attributes";
 import CategoryFilter from "./categories";
 import PriceSlider from "./price";
 import Rating from "./rating";
+import Tags from "./tags";
 
 interface Props {
   categories: Awaited<ReturnType<typeof getCategories>>;
@@ -41,8 +44,8 @@ export default function FiltersDialog({ categories, tags }: Props) {
         <Filter /> Filters
       </DialogTrigger>
 
-      <DialogContent>
-        <div className="relative h-full">
+      <DialogContent className="py-0">
+        <div className="relative h-full pt-6">
           <DialogHeader>
             <DialogTitle>Filters</DialogTitle>
             <DialogDescription></DialogDescription>
@@ -64,6 +67,7 @@ function Wrapper({ children }: { children: React.ReactNode }) {
 
 function Filters({
   categories,
+  tags,
   setOpen,
 }: Props & { setOpen: (b: boolean) => void }) {
   const { params, updateParams } = useUpdateParams();
@@ -74,6 +78,7 @@ function Filters({
     min_price: getNumberFromParams("min_price", params),
     max_price: getNumberFromParams("max_price", params),
     attributes: decodeAttributes(params),
+    tags: decodeTags(params),
   });
 
   function handleSubmit() {
@@ -81,6 +86,12 @@ function Filters({
       encodeAttributes(state.attributes, params);
     } else {
       params.delete("attributes");
+    }
+
+    if (state.tags.length > 0) {
+      encodeTags(state.tags, params);
+    } else {
+      params.delete("tags");
     }
 
     if (state.category) {
@@ -128,6 +139,8 @@ function Filters({
 
       <Rating rating={state.min_rating} dispatch={dispatch} />
 
+      <Tags dispatch={dispatch} tags={tags} selectedTags={state.tags} />
+
       {state.category && (
         <AttributeFilters
           dispatch={dispatch}
@@ -139,7 +152,7 @@ function Filters({
         />
       )}
 
-      <DialogFooter className="bg-background border-input-border sticky bottom-0 -mt-2 border-t pt-3">
+      <DialogFooter className="bg-background border-input-border sticky bottom-0 border-t py-4">
         <Button size="sm" onClick={handleSubmit}>
           Save Filters
         </Button>
