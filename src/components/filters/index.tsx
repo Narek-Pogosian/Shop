@@ -44,7 +44,7 @@ export default function FiltersDialog({ categories, tags }: Props) {
         <Filter /> Filters
       </DialogTrigger>
 
-      <DialogContent className="py-0">
+      <DialogContent className="py-0 sm:max-w-xl">
         <div className="relative h-full pt-6">
           <DialogHeader>
             <DialogTitle>Filters</DialogTitle>
@@ -138,7 +138,6 @@ function Filters({
       />
 
       <Rating rating={state.min_rating} dispatch={dispatch} />
-
       <Tags dispatch={dispatch} tags={tags} selectedTags={state.tags} />
 
       {state.category && (
@@ -152,7 +151,7 @@ function Filters({
         />
       )}
 
-      <DialogFooter className="bg-background border-input-border sticky bottom-0 border-t py-4">
+      <DialogFooter className="bg-background sticky bottom-0 -mt-4 py-4">
         <Button size="sm" onClick={handleSubmit}>
           Save Filters
         </Button>

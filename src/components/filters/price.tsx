@@ -31,7 +31,7 @@ function PriceSlider({ dispatch, min_price, max_price }: Props) {
         aria-label="Price range"
         min={MIN_PRICE}
         max={MAX_PRICE}
-        step={10}
+        step={5}
         value={[min_price ?? MIN_PRICE, max_price ?? MAX_PRICE]}
         onValueChange={([newMin, newMax]) => {
           dispatch({ type: "SET_MIN_PRICE", payload: newMin });

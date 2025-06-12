@@ -26,7 +26,7 @@ export default function CategoryFilter({
       >
         Category
       </h3>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1">
         <Button
           variant="outline"
           size="sm"
