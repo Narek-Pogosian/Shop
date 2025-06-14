@@ -5,7 +5,7 @@
 
 - [x] Tags and category attributes filter
 - [x] Descriptive grid toggle
-- [ ] Details page
+- [x] Details page
 - [ ] Reviews
 - [ ] Cart
 

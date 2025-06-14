@@ -142,7 +142,7 @@ function Filters({
         />
       )}
 
-      <DialogFooter className="bg-background sticky bottom-0 -mt-4 py-4">
+      <DialogFooter className="bg-background sticky bottom-0 -mt-4 pt-4 pb-6">
         <Button size="sm" onClick={handleSubmit}>
           Save Filters
         </Button>

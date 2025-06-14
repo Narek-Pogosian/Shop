@@ -29,7 +29,7 @@ export default function ProductCard({ product }: Props) {
         <div>
           <h3 className="mb-2 text-lg font-bold sm:text-xl">
             <Link
-              href={`/product/${product.slug}`}
+              href={`/p/${product.slug}`}
               className="after:absolute after:inset-0"
               prefetch={false}
             >
@@ -71,7 +71,7 @@ export default function ProductCard({ product }: Props) {
       </div>
       <h3 className="text-sm font-semibold">
         <Link
-          href={`/product/${product.slug}`}
+          href={`/p/${product.slug}`}
           className="after:absolute after:inset-0"
           prefetch={false}
         >

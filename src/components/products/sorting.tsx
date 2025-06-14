@@ -18,11 +18,6 @@ type Option = {
 
 const sortingOptions: Option[] = [
   {
-    sort_by: null,
-    dir: null,
-    label: "Latest",
-  },
-  {
     sort_by: "price",
     dir: "asc",
     label: "Lowest price",
@@ -31,6 +26,11 @@ const sortingOptions: Option[] = [
     sort_by: "price",
     dir: "desc",
     label: "Highest price",
+  },
+  {
+    sort_by: null,
+    dir: null,
+    label: "Latest",
   },
 ];
 
