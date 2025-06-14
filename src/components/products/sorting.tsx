@@ -23,11 +23,6 @@ const sortingOptions: Option[] = [
     label: "Latest",
   },
   {
-    sort_by: "rating",
-    dir: "desc",
-    label: "Most popular",
-  },
-  {
     sort_by: "price",
     dir: "asc",
     label: "Lowest price",

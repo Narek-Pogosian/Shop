@@ -30,16 +30,14 @@ export default function AttributeFilters({
   }
 
   return (
-    <div>
-      <h3 className="text-foreground-muted mb-1 text-xs font-semibold tracking-wider uppercase">
-        Attributes
-      </h3>
+    <>
+      <h3 className="sr-only">Attributes</h3>
 
       {attributes.map((attribute) => (
-        <div key={attribute.id} className="mb-4">
+        <div key={attribute.id}>
           <h4
             id={attribute.name}
-            className="text-foreground-muted mb-1 text-xs tracking-wider"
+            className="text-foreground-muted mb-1 text-xs font-semibold tracking-wider uppercase"
           >
             {attribute.name}
           </h4>
@@ -50,7 +48,6 @@ export default function AttributeFilters({
           >
             {attribute.values.map((value) => {
               const includes = isValueIncluded(attribute.name, value);
-
               return (
                 <Button
                   key={value}
@@ -70,6 +67,6 @@ export default function AttributeFilters({
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
 }

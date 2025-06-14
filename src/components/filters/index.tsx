@@ -27,7 +27,6 @@ import { Filter } from "lucide-react";
 import AttributeFilters from "./attributes";
 import CategoryFilter from "./categories";
 import PriceSlider from "./price";
-import Rating from "./rating";
 import Tags from "./tags";
 
 interface Props {
@@ -74,7 +73,6 @@ function Filters({
 
   const [state, dispatch] = useReducer(filterReducer, {
     category: params.get("category") ?? undefined,
-    min_rating: getNumberFromParams("min_rating", params),
     min_price: getNumberFromParams("min_price", params),
     max_price: getNumberFromParams("max_price", params),
     attributes: decodeAttributes(params),
@@ -98,12 +96,6 @@ function Filters({
       params.set("category", state.category);
     } else {
       params.delete("category");
-    }
-
-    if (state.min_rating) {
-      params.set("min_rating", String(state.min_rating));
-    } else {
-      params.delete("min_rating");
     }
 
     if (state.min_price) {
@@ -137,7 +129,6 @@ function Filters({
         max_price={state.max_price}
       />
 
-      <Rating rating={state.min_rating} dispatch={dispatch} />
       <Tags dispatch={dispatch} tags={tags} selectedTags={state.tags} />
 
       {state.category && (

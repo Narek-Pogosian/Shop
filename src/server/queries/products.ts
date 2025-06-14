@@ -48,7 +48,6 @@ async function discoverProductsInternal(queryOptions: ProductQueryParamsType) {
     category,
     min_price,
     max_price,
-    min_rating,
     page = 1,
     sort_by = "createdAt",
     dir = "desc",
@@ -84,17 +83,13 @@ async function discoverProductsInternal(queryOptions: ProductQueryParamsType) {
     }
   }
 
-  if (min_rating !== undefined) {
-    where.rating = { gte: min_rating };
-  }
-
   if (attributes) {
     const whereConditions = attributes.map((attribute) => ({
       productAttributes: {
         some: {
           AND: [
             { name: attribute.name },
-            { values: { hasEvery: attribute.values } },
+            { values: { hasSome: attribute.values } },
           ],
         },
       },
@@ -145,7 +140,6 @@ async function discoverProductsInternal(queryOptions: ProductQueryParamsType) {
 export async function discoverProducts(queryOptions: ProductQueryParamsType) {
   if (
     queryOptions.attributes ||
-    queryOptions.min_rating ||
     queryOptions.max_price ||
     queryOptions.min_price ||
     queryOptions.tags

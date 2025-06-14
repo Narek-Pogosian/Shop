@@ -36,7 +36,7 @@
 
   --scrollbar: hsl(240, 8%, 82%);
   --border: hsl(240, 6%, 89%);
-  --ring: hsl(0, 0%, 0%);
+  --ring: hsl(0, 0%, 32%);
 
   --radius: 6px;
 }
@@ -63,7 +63,7 @@
 
   --scrollbar: hsl(240, 2%, 22%);
   --border: hsl(240, 2%, 15%);
-  --ring: hsl(0, 0%, 100%);
+  --ring: hsl(0, 0%, 75%);
 }
 
 @theme inline {
@@ -112,6 +112,10 @@
 
   body {
     @apply bg-background text-foreground h-full overflow-x-clip overflow-y-scroll;
+  }
+
+  a {
+    @apply focus-visible:ring-ring/70 focus-visible:ring-offset-background rounded outline-0 focus-visible:ring-2 focus-visible:ring-offset-1;
   }
 
   [class*="animate-"] {

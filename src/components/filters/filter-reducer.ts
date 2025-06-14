@@ -3,7 +3,6 @@ import type { ActionDispatch } from "react";
 
 export type FilterState = {
   category?: string;
-  min_rating?: number;
   min_price?: number;
   max_price?: number;
   attributes: Attribute[];
@@ -12,7 +11,6 @@ export type FilterState = {
 
 type Action =
   | { type: "SET_CATEGORY"; payload?: string }
-  | { type: "SET_MIN_RATING"; payload?: number }
   | { type: "SET_MIN_PRICE"; payload?: number }
   | { type: "SET_MAX_PRICE"; payload?: number }
   | { type: "ADD_ATTRIBUTE"; payload: { name: string; value: string } }
@@ -27,9 +25,6 @@ export function filterReducer(state: FilterState, action: Action): FilterState {
   switch (action.type) {
     case "SET_CATEGORY":
       return { ...state, category: action.payload };
-
-    case "SET_MIN_RATING":
-      return { ...state, min_rating: action.payload };
 
     case "SET_MIN_PRICE":
       return { ...state, min_price: action.payload };

@@ -1,11 +1,9 @@
 import { type ProductQueryParamsType } from "@/lib/schemas/product-schemas";
 import { discoverProducts } from "@/server/queries/products";
-import { formatPrice } from "@/lib/utils/price";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Luggage } from "lucide-react";
+import ProductCard, { ProductCardSkeleton } from "./product-card";
 import ProductPagination from "./pagination";
-import Image from "next/image";
-import Link from "next/link";
+import ProductGrid from "./product-grid";
 
 export default async function ProductList({
   searchParams,
@@ -30,33 +28,11 @@ export default async function ProductList({
 
   return (
     <section aria-label="products">
-      <ul className="grid w-full grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 lg:gap-10 xl:grid-cols-4">
+      <ProductGrid>
         {res.products.map((product) => (
-          <li key={product.id} className="relative">
-            <div className="relative mb-2 aspect-[3/4]">
-              <Image
-                src={product.poster}
-                alt=""
-                fill
-                sizes="33vw"
-                className="rounded"
-              />
-            </div>
-            <h3 className="text-sm font-semibold">
-              <Link
-                href={`/product/${product.slug}`}
-                className="after:absolute after:inset-0"
-                prefetch={false}
-              >
-                {product.name}
-              </Link>
-            </h3>
-            <p className="text-foreground-muted text-xs sm:text-sm">
-              {formatPrice(product.price)}
-            </p>
-          </li>
+          <ProductCard key={product.id} product={product} />
         ))}
-      </ul>
+      </ProductGrid>
 
       {res.totalPages > 1 && (
         <ProductPagination
@@ -68,16 +44,19 @@ export default async function ProductList({
   );
 }
 
-export function ProductsSkeleton() {
+export function ProductsSkeleton({
+  showDescriptiveGrid,
+}: {
+  showDescriptiveGrid: boolean;
+}) {
   return (
-    <ul className="grid w-full grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 lg:gap-10 xl:grid-cols-4">
-      {new Array(10).fill(0).map((_, i) => (
-        <li key={i}>
-          <Skeleton className="relative mb-2 aspect-[3/4]" />
-          <Skeleton className="mb-1 h-4 sm:mb-1.5" />
-          <Skeleton className="h-3 w-20 pb-1 sm:h-4" />
-        </li>
+    <ProductGrid>
+      {new Array(12).fill(0).map((_, i) => (
+        <ProductCardSkeleton
+          key={i}
+          showDescriptiveGrid={showDescriptiveGrid}
+        />
       ))}
-    </ul>
+    </ProductGrid>
   );
 }
