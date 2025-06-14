@@ -12,15 +12,13 @@ model Product {
     name        String
     slug        String  @unique
     price       Float
+    poster      String
     description String
     isFeatured  Boolean @default(false)
-    poster      String
 
     categorySlug      String
     category          Category           @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)
-    reviews           Review[]
     productAttributes ProductAttribute[]
-    cartItems         CartItem[]
     tags              ProductTag[]
 
     createdAt DateTime @default(now())
@@ -81,53 +79,6 @@ model CategoryAttribute {
     @@index([categoryId])
 }
 
-model Cart {
-    id        Int        @id @default(autoincrement())
-    cartToken String?
-    userId    String?    @unique
-    user      User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
-    items     CartItem[]
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    @@index([userId])
-    @@index([cartToken])
-}
-
-model CartItem {
-    id                Int  @id @default(autoincrement())
-    quantity          Int  @default(1)
-    productId         Int
-    cartId            Int
-    productAttributes Json
-
-    cart    Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
-    product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    @@index([cartId])
-}
-
-model Review {
-    id        Int     @id @default(autoincrement())
-    rating    Decimal @default(0)
-    comment   String?
-    userId    String
-    user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-    productId Int
-    product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    @@unique([userId, productId])
-    @@index([productId])
-    @@index([userId])
-}
-
 enum UserRole {
     ADMIN
     USER
@@ -142,8 +93,6 @@ model User {
     emailVerified  DateTime?
     image          String?
     accounts       Account[]
-    reviews        Review[]
-    cart           Cart?
 }
 
 model Account {

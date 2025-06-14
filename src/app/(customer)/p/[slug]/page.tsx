@@ -1,7 +1,6 @@
 import { getProductBySlug } from "@/server/queries/products";
 import { formatPrice } from "@/lib/utils/price";
-import { Luggage, Star } from "lucide-react";
-import { Decimal } from "@prisma/client/runtime/library";
+import { Luggage } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,13 +24,6 @@ export default async function ProductPage({ params }: { params: Params }) {
       </div>
     );
 
-  const rating =
-    product.reviews.length === 0
-      ? new Decimal(0)
-      : product.reviews
-          .reduce((acc, curr) => acc.add(curr.rating), new Decimal(0))
-          .dividedBy(product.reviews.length);
-
   return (
     <>
       <section
@@ -51,7 +43,6 @@ export default async function ProductPage({ params }: { params: Params }) {
             name={product.name}
             description={product.description}
             price={product.price}
-            rating={rating}
           />
         </div>
 
@@ -60,7 +51,6 @@ export default async function ProductPage({ params }: { params: Params }) {
             name={product.name}
             description={product.description}
             price={product.price}
-            rating={rating}
           />
 
           <p>TODO: Add to cart</p>
@@ -71,46 +61,35 @@ export default async function ProductPage({ params }: { params: Params }) {
 }
 
 interface InfoProps {
-  rating: Decimal;
+  description: string;
   price: number;
   name: string;
-  description: string;
 }
 
-function DesktopInfo({ name, description, price, rating }: InfoProps) {
+function DesktopInfo({ name, description, price }: InfoProps) {
   return (
     <div className="max-sm:hidden">
       <h1 className="mb-2 text-2xl font-bold">{name}</h1>
 
-      <div className="text-foreground-muted flex items-center gap-4">
-        <div className="flex items-center gap-0.5">
-          <Star className="size-4 fill-current text-amber-500" />
-          <p>{rating.toFixed(1)}</p>
-        </div>
+      <p className="text-foreground-muted font-semibold">
+        {formatPrice(price)}
+      </p>
 
-        <p className="font-semibold">{formatPrice(price)}</p>
-      </div>
-
-      <hr className="my-6" />
+      <hr className="my-8" />
       <p className="text-foreground-muted max-w-xl">{description}</p>
-      <hr className="my-6" />
+      <hr className="my-8" />
     </div>
   );
 }
 
-function MobileInfo({ name, description, price, rating }: InfoProps) {
+function MobileInfo({ name, description, price }: InfoProps) {
   return (
     <div className="absolute inset-0 rounded bg-black/60 p-8 text-white sm:hidden">
       <h1 id="title" className="mb-1 text-xl font-bold">
         {name}
       </h1>
-      <div className="mb-4 flex items-center gap-4">
-        <div className="flex items-center gap-0.5">
-          <Star className="size-4 fill-current text-amber-500" />
-          <p>{rating.toFixed(1)}</p>
-        </div>
-        <p className="font-semibold">{formatPrice(price)}</p>
-      </div>
+
+      <p className="mb-4 font-semibold">{formatPrice(price)}</p>
       <p className="max-w-lg">{description}</p>
     </div>
   );
