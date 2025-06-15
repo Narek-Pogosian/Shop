@@ -4,6 +4,7 @@ import { Luggage } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import AddToCart from "@/components/cart/add-to-cart";
 
 type Params = Promise<{ slug: string }>;
 
@@ -53,7 +54,7 @@ export default async function ProductPage({ params }: { params: Params }) {
             price={product.price}
           />
 
-          <p>TODO: Add to cart</p>
+          <AddToCart product={product} />
         </div>
       </section>
     </>

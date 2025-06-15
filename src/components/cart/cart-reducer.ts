@@ -1,23 +1,24 @@
 import type { ActionDispatch } from "react";
 
-export type CartItem = {
+export type CartItemType = {
   id: string;
   name: string;
+  slug: string;
   price: number;
   image: string;
   quantity: number;
-  attributes: JSON;
+  attributes: Record<string, string>;
 };
 
 export type CartState = {
-  cart: CartItem[];
+  cart: CartItemType[];
 };
 
 type Action =
-  | { type: "SET_CART"; payload: CartItem[] }
-  | { type: "ADD_ITEM"; payload: CartItem }
+  | { type: "SET_CART"; payload: CartItemType[] }
+  | { type: "ADD_ITEM"; payload: CartItemType }
   | { type: "REMOVE_ITEM"; payload: string }
-  | { type: "EDIT_QUANTITY"; payload: { id: string; quantity: number } };
+  | { type: "SET_QUANTITY"; payload: { id: string; quantity: number } };
 
 export type CartDispatch = ActionDispatch<[action: Action]>;
 
@@ -32,7 +33,7 @@ export function cartReducer(state: CartState, action: Action): CartState {
     case "REMOVE_ITEM":
       return { cart: state.cart.filter((item) => item.id !== action.payload) };
 
-    case "EDIT_QUANTITY":
+    case "SET_QUANTITY":
       return {
         cart: state.cart.map((item) =>
           item.id !== action.payload.id

@@ -17,3 +17,13 @@ export function slugify(str: string): string {
     .replace(/\s+/g, "-")
     .replace(/-+/g, "-");
 }
+
+export function shallowEquals<T extends object>(obj1: T, obj2: T): boolean {
+  if (Object.keys(obj1).length !== Object.keys(obj2).length) {
+    return false;
+  }
+
+  return Object.keys(obj1).every(
+    (key) => obj1[key as keyof T] === obj2[key as keyof T],
+  );
+}

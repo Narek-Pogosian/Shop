@@ -1,7 +1,7 @@
-export function getTotalPrice<
-  T extends { quantity: number; product: { price: number } },
->(arr: T[]) {
-  return arr.reduce((acc, curr) => acc + curr.quantity * curr.product.price, 0);
+export function getTotalPrice<T extends { quantity: number; price: number }>(
+  arr: T[],
+) {
+  return arr.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
 }
 
 export function formatPrice(amount: number, { showZeroAsNumber = false } = {}) {

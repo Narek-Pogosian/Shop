@@ -1,9 +1,9 @@
+import { SignInButton, SignOutButton } from "./auth-actions";
+import { getServerAuthSession } from "@/server/auth";
 import ThemeToggle from "@/components/theme-toggle";
 import Link from "next/link";
 import Logo from "@/components/logo";
-// import Cart from "../cart";
-import { getServerAuthSession } from "@/server/auth";
-import { SignInButton, SignOutButton } from "./auth-actions";
+import Cart from "@/components/cart";
 
 export default async function Header() {
   const session = await getServerAuthSession();
@@ -21,9 +21,12 @@ export default async function Header() {
             </Link>
           )}
         </div>
-        <div className="flex items-center gap-1">
-          <ThemeToggle />
-          {/* <Cart /> */}
+
+        <div className="flex items-center gap-4">
+          <div className="flex items-center">
+            <ThemeToggle />
+            <Cart />
+          </div>
           {session ? <SignOutButton /> : <SignInButton />}
         </div>
       </div>

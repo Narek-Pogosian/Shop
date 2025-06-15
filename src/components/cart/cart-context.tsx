@@ -4,12 +4,12 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import {
   cartReducer,
   type CartDispatch,
-  type CartItem,
+  type CartItemType,
   type CartState,
 } from "./cart-reducer";
 
 interface CartContextType {
-  cart: CartItem[];
+  cart: CartItemType[];
   dispatch: CartDispatch;
 }
 
@@ -20,7 +20,7 @@ const init = (): CartState => {
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
       try {
-        return { cart: JSON.parse(storedCart) as CartItem[] };
+        return { cart: JSON.parse(storedCart) as CartItemType[] };
       } catch (e) {
         console.error("Error parsing cart from localStorage", e);
       }
