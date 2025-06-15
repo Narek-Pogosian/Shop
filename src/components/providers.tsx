@@ -6,6 +6,7 @@ import {
   type ThemeProviderProps,
 } from "next-themes";
 import { SessionProvider } from "next-auth/react";
+import { CartContextProvider } from "./cart/cart-context";
 
 function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
@@ -20,7 +21,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         enableSystem
         disableTransitionOnChange
       >
-        {children}
+        <CartContextProvider>{children}</CartContextProvider>
       </ThemeProvider>
     </SessionProvider>
   );
