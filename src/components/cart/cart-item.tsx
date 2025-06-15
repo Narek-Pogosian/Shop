@@ -23,10 +23,11 @@ export default function CartItem({ item }: CartItemProps) {
       />
       <div className="flex grow justify-between">
         <div>
-          <Link href={`/p/${item.slug}`}>
-            <h3 className="text-sm font-semibold underline-offset-2 hover:underline">
-              {item.name}
-            </h3>
+          <Link
+            className="text-sm font-semibold underline-offset-2 hover:underline"
+            href={`/product/${item.slug}`}
+          >
+            {item.name}
           </Link>
           <p className="text-foreground-muted mb-2 text-sm">
             {Object.entries(item.attributes).map(([key, value]) => (

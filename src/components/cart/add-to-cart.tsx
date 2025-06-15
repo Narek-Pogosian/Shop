@@ -35,7 +35,10 @@ function AddToCart({ product }: Props) {
     if (alreadyInCart) {
       dispatch({
         type: "SET_QUANTITY",
-        payload: { id: alreadyInCart.id, quantity: alreadyInCart.quantity + 1 },
+        payload: {
+          id: alreadyInCart.id,
+          quantity: alreadyInCart.quantity + quantity,
+        },
       });
     } else {
       dispatch({

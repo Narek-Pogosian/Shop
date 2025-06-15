@@ -16,13 +16,22 @@ import { useIsMounted } from "@/hooks/use-is-mounted";
 import { ShoppingCart } from "lucide-react";
 import CartItem from "./cart-item";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Cart() {
+  const params = useParams();
   const isMounted = useIsMounted();
+  const [open, setOpen] = useState(false);
+
   const { cart } = useCartContext();
 
+  useEffect(() => {
+    setOpen(false);
+  }, [params]);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size="icon" variant="ghost" className="relative">
           <span className="sr-only">Your cart</span>
