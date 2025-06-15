@@ -40,7 +40,7 @@ export default async function ShopPage({
   return (
     <GridContextProvider defaultValue={showDescriptiveGrid}>
       <div className="mb-8 flex items-center justify-between">
-        <div className="[&_button]:border-input-border flex items-center gap-4 [&_button]:rounded-full">
+        <div className="flex items-center gap-4">
           <FiltersDialog categories={categories} tags={tags} />
           <DesktopCategories
             categories={categories}

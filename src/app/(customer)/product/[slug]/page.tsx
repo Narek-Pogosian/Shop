@@ -2,9 +2,9 @@ import { getProductBySlug } from "@/server/queries/products";
 import { formatPrice } from "@/lib/utils/price";
 import { Luggage } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AddToCart from "@/components/cart/add-to-cart";
 import Image from "next/image";
 import Link from "next/link";
-import AddToCart from "@/components/cart/add-to-cart";
 
 type Params = Promise<{ slug: string }>;
 
@@ -15,8 +15,8 @@ export default async function ProductPage({ params }: { params: Params }) {
   if (!product)
     return (
       <div className="pt-20 text-center">
-        <div className="bg-primary/5 mx-auto mb-4 flex size-28 items-center justify-center rounded-full">
-          <Luggage className="text-primary size-14" />
+        <div className="bg-brand/5 mx-auto mb-4 flex size-28 items-center justify-center rounded-full">
+          <Luggage className="text-brand size-14" />
         </div>
         <h1 className="mb-4 text-xl font-semibold">Product not found</h1>
         <Button size="lg" asChild>
@@ -76,9 +76,7 @@ function DesktopInfo({ name, description, price }: InfoProps) {
         {formatPrice(price)}
       </p>
 
-      <hr className="my-5" />
-      <p className="text-foreground-muted max-w-xl">{description}</p>
-      <hr className="my-5" />
+      <p className="text-foreground-muted max-w-xl pt-6 pb-10">{description}</p>
     </div>
   );
 }

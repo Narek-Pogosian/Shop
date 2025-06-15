@@ -52,12 +52,13 @@ export default function AttributeFilters({
                 <Button
                   key={value}
                   size="sm"
-                  variant="outline"
+                  variant="secondary"
                   aria-label={`Filter by ${attribute.name}: ${value}`}
                   aria-pressed={includes}
                   onClick={() => handleSelect(attribute.name, value)}
                   className={cn("text-xs md:text-sm", {
-                    "bg-primary! text-primary-foreground!": includes,
+                    "bg-primary! text-primary-foreground! shadow-btn-primary":
+                      includes,
                   })}
                 >
                   {value}

@@ -1,9 +1,9 @@
 import type { CartItemType } from "./cart-reducer";
 import { useCartContext } from "./cart-context";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import Link from "next/link";
 
 interface CartItemProps {
   item: CartItemType;
@@ -11,24 +11,27 @@ interface CartItemProps {
 
 export default function CartItem({ item }: CartItemProps) {
   const { dispatch } = useCartContext();
+  const router = useRouter();
 
   return (
-    <div className="flex gap-4 border-b py-5">
+    <div className="border-accent flex gap-4 border-b py-5">
       <Image
         src={item.image}
         alt=""
-        width={60}
+        width={70}
         height={95}
         className="rounded"
       />
       <div className="flex grow justify-between">
         <div>
-          <Link
-            className="text-sm font-semibold underline-offset-2 hover:underline"
-            href={`/product/${item.slug}`}
+          <Button
+            role="link"
+            variant="link"
+            className="p-0"
+            onClick={() => router.push(`/products/${item.slug}`)}
           >
             {item.name}
-          </Link>
+          </Button>
           <p className="text-foreground-muted mb-2 text-sm">
             {Object.entries(item.attributes).map(([key, value]) => (
               <span key={key} className="text-foreground-muted mr-2 text-sm">
@@ -43,8 +46,8 @@ export default function CartItem({ item }: CartItemProps) {
         <Button
           size="sm"
           variant="ghost"
+          className="h-fit text-xs"
           onClick={() => dispatch({ type: "REMOVE_ITEM", payload: item.id })}
-          className="h-fit"
         >
           Remove
         </Button>
@@ -84,7 +87,7 @@ function QuantityChange({
         max={100}
         value={quantity || ""}
         onChange={handleQuantityChange}
-        className="w-16 rounded border py-1 pr-0.5 pl-2 text-sm"
+        className="bg-input w-16 rounded py-1 pr-0.5 pl-2 text-sm"
       />
     </label>
   );
@@ -92,7 +95,7 @@ function QuantityChange({
 
 export function PreviewCartItem({ item }: CartItemProps) {
   return (
-    <div className="flex gap-4 border-b py-4">
+    <div className="border-accent flex gap-4 border-b py-4">
       <Image
         src={item.image}
         alt=""

@@ -17,20 +17,26 @@ type Action =
   | { type: "REMOVE_ATTRIBUTE"; payload: { name: string; value: string } }
   | { type: "ADD_TAG"; payload: number }
   | { type: "REMOVE_TAG"; payload: number }
-  | { type: "SET_STATE"; payload: FilterState };
+  | { type: "RESET" };
 
 export type FilterDispatch = ActionDispatch<[action: Action]>;
 
 export function filterReducer(state: FilterState, action: Action): FilterState {
   switch (action.type) {
     case "SET_CATEGORY":
-      return { ...state, category: action.payload };
+      return { ...state, category: action.payload, attributes: [] };
 
     case "SET_MIN_PRICE":
       return { ...state, min_price: action.payload };
 
     case "SET_MAX_PRICE":
       return { ...state, max_price: action.payload };
+
+    case "ADD_TAG":
+      return { ...state, tags: [...state.tags, action.payload] };
+
+    case "REMOVE_TAG":
+      return { ...state, tags: state.tags.filter((t) => t !== action.payload) };
 
     case "ADD_ATTRIBUTE": {
       const { name, value } = action.payload;
@@ -86,15 +92,6 @@ export function filterReducer(state: FilterState, action: Action): FilterState {
 
       return { ...state, attributes: updatedAttributes };
     }
-
-    case "ADD_TAG":
-      return { ...state, tags: [...state.tags, action.payload] };
-
-    case "REMOVE_TAG":
-      return { ...state, tags: state.tags.filter((t) => t !== action.payload) };
-
-    case "SET_STATE":
-      return action.payload;
 
     default:
       return state;

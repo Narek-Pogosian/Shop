@@ -87,12 +87,12 @@ function AddToCart({ product }: Props) {
               {attribute.values.map((value) => (
                 <Button
                   key={value}
-                  size="sm"
-                  variant="outline"
+                  // size="sm"
+                  variant="secondary"
                   aria-pressed={selectedAttributes[attribute.name] === value}
                   aria-label={`Select ${value} for ${attribute.name}`}
                   className={cn("text-xs md:text-sm", {
-                    "bg-primary! text-primary-foreground!":
+                    "bg-primary! text-primary-foreground! shadow-btn-primary":
                       selectedAttributes[attribute.name] === value,
                   })}
                   onClick={() =>
@@ -119,11 +119,12 @@ function AddToCart({ product }: Props) {
           value={quantity || ""}
           onChange={handleQuantityChange}
           aria-label="Select quantity"
-          className="bg-background w-24"
+          className="w-24"
         />
         <Button
           disabled={!isValid}
           onClick={handleAdd}
+          variant="brand"
           aria-label={`Add ${quantity} items to cart with selected attributes`}
           className="w-28"
         >

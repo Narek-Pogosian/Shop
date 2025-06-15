@@ -22,7 +22,7 @@ export default async function AdminCategoriesPage() {
         {categories.map((category) => (
           <li
             key={category.id}
-            className="flex items-center justify-between gap-2 [&:not(:last-of-type)]:border-b [&:not(:last-of-type)]:pb-6"
+            className="border-accent flex items-center justify-between gap-2 [&:not(:last-of-type)]:border-b [&:not(:last-of-type)]:pb-6"
           >
             <div className="flex items-center gap-6">
               <div>

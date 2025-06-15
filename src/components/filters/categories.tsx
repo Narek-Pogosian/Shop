@@ -28,9 +28,12 @@ export default function CategoryFilter({
       </h3>
       <div className="flex flex-wrap gap-1">
         <Button
-          variant="outline"
+          variant="secondary"
           size="sm"
-          className={cn({ "bg-primary! text-primary-foreground!": !category })}
+          className={cn({
+            "bg-primary! text-primary-foreground! shadow-btn-primary":
+              !category,
+          })}
           aria-pressed={!category}
           onClick={() => handleCategoryChange(undefined)}
         >
@@ -39,10 +42,11 @@ export default function CategoryFilter({
         {categories.map((c) => (
           <Button
             key={c.id}
-            variant="outline"
+            variant="secondary"
             size="sm"
             className={cn({
-              "bg-primary! text-primary-foreground!": category == c.slug,
+              "bg-primary! text-primary-foreground! shadow-btn-primary":
+                category == c.slug,
             })}
             aria-pressed={category == c.slug}
             onClick={() => handleCategoryChange(c.slug)}

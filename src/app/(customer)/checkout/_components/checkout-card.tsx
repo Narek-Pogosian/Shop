@@ -13,8 +13,8 @@ export default function CheckoutCard() {
   if (cart.length === 0) {
     return (
       <div className="py-10 text-center">
-        <div className="bg-primary/5 mx-auto mb-4 flex size-28 items-center justify-center rounded-full">
-          <ShoppingCart className="text-primary size-14" />
+        <div className="bg-brand/5 mx-auto mb-4 flex size-28 items-center justify-center rounded-full">
+          <ShoppingCart className="text-brand size-14" />
         </div>
         <h1 className="mb-6 text-xl font-semibold">Your cart is empty</h1>
         <Button asChild>
@@ -34,7 +34,7 @@ export default function CheckoutCard() {
 
       <CartPrice items={cart} />
 
-      <Button>Place order</Button>
+      <Button variant="brand">Place order</Button>
     </>
   );
 }

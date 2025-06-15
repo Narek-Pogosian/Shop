@@ -15,8 +15,8 @@ export default async function ProductList({
   if (res.products.length === 0) {
     return (
       <div className="pt-20 text-center">
-        <div className="bg-primary/5 mx-auto mb-4 flex size-28 items-center justify-center rounded-full">
-          <Luggage className="text-primary size-14" />
+        <div className="bg-brand/5 mx-auto mb-4 flex size-28 items-center justify-center rounded-full">
+          <Luggage className="text-brand size-14" />
         </div>
         <h1 className="mb-2 text-xl font-semibold">No products found</h1>
         <p className="text-foreground-muted">

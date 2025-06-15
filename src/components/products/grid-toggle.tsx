@@ -1,7 +1,7 @@
 "use client";
 
+import { LayoutGrid, List } from "lucide-react";
 import { useGridContext } from "./grid-context";
-import { Grid3X3, List } from "lucide-react";
 import { Button } from "../ui/button";
 
 export default function GridToggle() {
@@ -10,12 +10,11 @@ export default function GridToggle() {
   return (
     <Button
       size="icon"
-      variant="outline"
+      variant="secondary"
       aria-pressed={showDescriptiveGrid}
-      className="border-input-border"
       onClick={toggleDescriptiveGrid}
     >
-      {showDescriptiveGrid ? <Grid3X3 /> : <List />}
+      {showDescriptiveGrid ? <List /> : <LayoutGrid />}
     </Button>
   );
 }

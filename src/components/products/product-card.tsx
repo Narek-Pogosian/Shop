@@ -17,7 +17,7 @@ export default function ProductCard({ product }: Props) {
   if (showDescriptiveGrid) {
     return (
       <li className="relative flex gap-4 lg:gap-8">
-        <div className="relative mb-2 aspect-[3/4] w-32 shrink-0 sm:w-52 lg:w-72">
+        <div className="relative mb-2 aspect-[3/4] h-fit w-32 shrink-0 sm:w-52 lg:w-72">
           <Image
             src={product.poster}
             alt=""
@@ -27,7 +27,7 @@ export default function ProductCard({ product }: Props) {
           />
         </div>
         <div>
-          <h3 className="mb-2 text-lg font-bold sm:text-xl">
+          <h3 className="font-bold sm:mb-2 sm:text-xl">
             <Link
               href={`/product/${product.slug}`}
               className="after:absolute after:inset-0"
@@ -37,9 +37,11 @@ export default function ProductCard({ product }: Props) {
             </Link>
           </h3>
 
-          <p className="mb-3 font-semibold">{formatPrice(product.price)}</p>
+          <p className="text-sm font-semibold sm:mb-3 sm:text-base">
+            {formatPrice(product.price)}
+          </p>
 
-          <p className="text-foreground-muted mb-6 hidden text-sm sm:block lg:text-lg">
+          <p className="text-foreground-muted mb-2 line-clamp-5 text-sm sm:mb-6 lg:text-lg">
             {product.description}
           </p>
 
@@ -47,7 +49,7 @@ export default function ProductCard({ product }: Props) {
             {product.tags.map((t) => (
               <li
                 key={t.id}
-                className="bg-primary text-primary-foreground rounded px-2 py-1 text-xs font-semibold sm:px-3 sm:py-1.5 sm:text-sm"
+                className="bg-brand-500 text-brand-foreground rounded px-1 py-0.5 text-xs font-semibold sm:px-2 sm:py-1"
               >
                 {t.name}
               </li>
@@ -94,16 +96,16 @@ export function ProductCardSkeleton({
     return (
       <li className="relative flex gap-4 lg:gap-8">
         <div className="relative mb-2 aspect-[3/4] w-32 shrink-0 sm:w-52 lg:w-72">
-          <Skeleton className="h-full w-full rounded" />
+          <Skeleton className="h-full w-full" />
         </div>
+
         <div className="flex flex-1 flex-col">
-          <Skeleton className="mb-2 h-6 w-3/4 sm:h-8" />
-          <Skeleton className="mb-3 h-5 w-24" />
-          <Skeleton className="mb-7 hidden h-4 w-full sm:block lg:h-12" />
+          <Skeleton className="mb-1 h-6 w-3/4 sm:mb-2 sm:h-8" />
+          <Skeleton className="mb-1 h-4 w-24 sm:mb-4" />
+          <Skeleton className="mb-2 h-[70px] w-full sm:mb-7" />
           <div className="flex flex-wrap gap-2">
-            <Skeleton className="h-8 w-16 rounded" />
-            <Skeleton className="h-8 w-12 rounded" />
-            <Skeleton className="hidden h-8 w-20 rounded sm:block" />
+            <Skeleton className="h-5 w-16 sm:h-9" />
+            <Skeleton className="h-5 w-14 sm:h-9" />
           </div>
         </div>
       </li>

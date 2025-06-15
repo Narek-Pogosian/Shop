@@ -1,29 +1,29 @@
-import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 import { Slot, Slottable } from "@radix-ui/react-slot";
-import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 import { Loader2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center gap-2 justify-center whitespace-nowrap cursor-pointer rounded text-sm font-semibold transition-[color,box-shadow,background-color] disabled:pointer-events-none disabled:opacity-60 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-5 shrink-0 [&_svg]:shrink-0 outline-none  focus-visible:ring-ring/70 focus-visible:ring-2",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded text-sm font-semibold transition-[color, box-shadow] duration-300 disabled:pointer-events-none disabled:opacity-70 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4.5 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-2 ",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-        accent: "bg-accent text-accent-foreground hover:bg-accent/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-offset-2 focus-visible:ring-offset-background shadow-btn-primary",
+        brand:
+          "bg-brand-500 hover:bg-brand-600 text-brand-foreground shadow-btn-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        danger:
+          "bg-danger-500 hover:bg-danger-600 text-danger-foreground shadow-btn-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-danger-500",
         secondary:
-          "bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15",
-        ghost: "hover:bg-black/10 dark:hover:bg-white/10",
-        outline:
-          "hover:bg-black/5 bg-white/50 dark:bg-white/5 dark:hover:bg-white/10 border-1",
-        link: "text-primary-primary underline-offset-4 hover:underline",
+          "bg-secondary focus-visible:ring-offset-1 focus-visible:ring-offset-background hover:bg-secondary-hover shadow-btn-secondary",
+        ghost: "hover:bg-accent",
+        link: "hover:underline",
       },
       size: {
         default: "px-4 py-2 has-[>svg]:px-3",
-        sm: "py-1.5 gap-1.5 px-2.5 has-[>svg]:px-2",
-        lg: "px-6 py-2.5 has-[>svg]:px-4 text-lg",
+        sm: "py-1.5 gap-1.5 px-3 has-[>svg]:px-2.5",
+        lg: "py-2.5 px-6 has-[>svg]:px-4",
         icon: "size-9",
       },
     },
@@ -57,7 +57,7 @@ function Button({
       disabled={loading || disabled}
       {...props}
     >
-      {loading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
+      {loading && <Loader2 className="size-5 animate-spin" />}
       <Slottable>{children}</Slottable>
     </Comp>
   );

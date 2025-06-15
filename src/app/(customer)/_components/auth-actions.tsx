@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function SignInButton() {
   return (
-    <Button size="sm" className="rounded-full" asChild>
+    <Button size="sm" variant="brand" asChild>
       <Link href="/login">Sign in</Link>
     </Button>
   );
@@ -14,7 +14,7 @@ export function SignInButton() {
 
 export function SignOutButton() {
   return (
-    <Button size="sm" className="rounded-full" onClick={() => signOut()}>
+    <Button size="sm" variant="secondary" onClick={() => signOut()}>
       Sign out
     </Button>
   );

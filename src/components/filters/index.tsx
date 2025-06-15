@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -20,10 +20,10 @@ import {
   getNumberFromParams,
 } from "@/lib/utils/params";
 import { type getCategories } from "@/server/queries/categories";
+import { SlidersHorizontal } from "lucide-react";
 import { useUpdateParams } from "@/hooks/use-update-params";
 import { filterReducer } from "./filter-reducer";
 import { type getTags } from "@/server/queries/tags";
-import { Filter } from "lucide-react";
 import AttributeFilters from "./attributes";
 import CategoryFilter from "./categories";
 import PriceSlider from "./price";
@@ -39,14 +39,16 @@ export default function FiltersDialog({ categories, tags }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className={buttonVariants()}>
-        <Filter /> Filters
+      <DialogTrigger asChild>
+        <Button variant="brand">
+          <SlidersHorizontal /> Filters
+        </Button>
       </DialogTrigger>
 
       <DialogContent className="py-0 sm:max-w-xl">
         <div className="relative h-full pt-6">
           <DialogHeader>
-            <DialogTitle>Filters</DialogTitle>
+            <DialogTitle className="mb-2">Filters</DialogTitle>
             <DialogDescription></DialogDescription>
           </DialogHeader>
           <Wrapper>
@@ -142,14 +144,12 @@ function Filters({
         />
       )}
 
-      <DialogFooter className="bg-background sticky bottom-0 -mt-4 pt-4 pb-6">
-        <Button size="sm" onClick={handleSubmit}>
+      <DialogFooter className="bg-background sticky bottom-0 pt-4 pb-6 sm:justify-start">
+        <Button variant="brand" onClick={handleSubmit}>
           Save Filters
         </Button>
         <DialogClose asChild>
-          <Button variant="outline" size="sm">
-            Cancel
-          </Button>
+          <Button variant="secondary">Close</Button>
         </DialogClose>
       </DialogFooter>
     </div>

@@ -81,7 +81,7 @@ function LoginForm() {
           </p>
         )}
 
-        <Button loading={isLoading} type="submit">
+        <Button variant="brand" loading={isLoading} type="submit">
           Login
         </Button>
       </form>

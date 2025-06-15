@@ -3,97 +3,161 @@
 
 @plugin 'tailwind-scrollbar';
 
-@variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --accent: hsl(192.9 82.3% 31%);
-  --accent-text: hsl(194.4 69.6% 27.1%);
-  --accent-foreground: hsl(0, 0%, 100%);
+  --radius: 0.5rem;
 
-  --primary: hsl(240 8% 18%);
-  --primary-foreground: hsl(0 0% 98%);
+  --primary: hsl(0, 0%, 15%);
+  --primary-foreground: hsl(0, 0%, 98%);
 
-  --destructive: hsl(0, 48%, 48%);
-  --destructive-foreground: hsl(0, 0%, 100%);
-  --destructive-text: hsl(0, 52%, 40%);
+  --background: hsl(210, 18%, 96.5%);
+  --foreground: hsl(0, 0%, 6%);
+  --foreground-muted: hsl(0, 0%, 42%);
 
-  --background: hsl(240, 20%, 96.5%);
-  --background-card: hsl(0, 0%, 100%);
-  --background-popover: hsl(0, 0%, 100%);
-  --background-popover-focus: hsl(0, 0%, 93%);
+  --card: hsl(0, 0%, 98%);
+  --input: hsl(240, 5%, 99%);
+  --accent: hsla(240, 8%, 89%, 37%);
+  --popover: hsl(240, 4%, 99%);
 
-  --foreground: hsl(240, 2%, 10%);
-  --foreground-muted: hsl(240, 2%, 35%);
+  --brand-400: hsl(165, 51%, 42%);
+  --brand-500: hsl(165, 51%, 33%);
+  --brand-600: hsl(165, 51%, 27%);
 
-  --input-background: hsl(240, 12%, 98%);
-  --input-foreground: hsl(240, 2%, 10%);
-  --input-placeholder: hsl(240, 6%, 35%);
-  --input-border: hsl(240, 12%, 87.5%);
+  --brand-foreground: hsl(0, 0%, 100%);
+  --brand-text: hsl(165, 51%, 25%);
 
-  --scrollbar: hsl(240, 8%, 82%);
-  --border: hsl(240, 6%, 89%);
-  --ring: hsl(0, 0%, 32%);
+  --secondary: hsl(0, 0%, 99.3%);
+  --secondary-foreground: hsl(0, 0%, 6%);
+  --secondary-hover: hsl(240, 4%, 96%);
 
-  --radius: 6px;
+  --danger-500: hsl(352, 65%, 50%);
+  --danger-600: hsl(352, 65%, 42%);
+  --danger-foreground: hsl(0, 0%, 100%);
+  --danger-text: hsl(352, 85%, 40%);
+
+  --scrollbar: hsl(0, 0%, 75%);
+  --ring: hsl(0, 0%, 15%);
+
+  --shadow-card:
+    hsla(230, 40%, 40%, 0.2) 0px 4px 7px,
+    inset 0px 3px 5px hsla(210, 8%, 100%, 1);
+
+  --shadow-popover:
+    hsla(230, 20%, 40%, 0.3) 0px 6px 10px,
+    inset 0px 3px 5px hsla(210, 8%, 100%, 1);
+
+  --shadow-input:
+    hsla(210, 24%, 2%, 0.15) 0px 1px 2px,
+    inset 0px 1px 2px hsla(210, 8%, 100%, 1);
+
+  --shadow-btn-brand:
+    hsla(210, 8%, 2%, 0.25) 0px 1px 5px,
+    inset 0px 2px 3px hsla(210, 8%, 100%, 0.35);
+
+  --shadow-btn-primary:
+    hsla(210, 8%, 2%, 0.25) 0px 1px 5px,
+    inset 0px 1px 3px hsla(210, 8%, 90%, 0.35);
+
+  --shadow-btn-secondary:
+    hsla(210, 8%, 22%, 0.2) 0px 1px 3px,
+    inset 0px 1px 1px hsla(210, 8%, 100%, 1);
 }
 
 .dark {
-  --accent-text: hsl(187.9 85.7% 53.3%);
-  --destructive-text: hsl(0, 80%, 68%);
+  --primary: hsl(0, 0%, 87%);
+  --primary-foreground: hsl(0, 0%, 9%);
 
-  --primary: hsl(0 0% 98%);
-  --primary-foreground: hsl(240 5.9% 10%);
+  --background: hsl(0, 0%, 9%);
+  --foreground: hsl(0, 0%, 100%);
+  --foreground-muted: hsl(0, 0%, 65%);
 
-  --background: hsl(240, 2%, 7%);
-  --background-card: hsl(240, 2%, 9.5%);
-  --background-popover: hsl(240, 2%, 8.5%);
-  --background-popover-focus: hsl(240, 2%, 18.5%);
+  --card: hsl(240, 1%, 11%);
+  --input: hsl(240, 3%, 15%);
+  --accent: hsla(240, 4%, 22%, 62%);
+  --popover: hsl(240, 2%, 11%);
 
-  --foreground: hsl(240, 2%, 98%);
-  --foreground-muted: hsl(240, 2%, 70%);
+  --secondary: hsl(240, 4%, 13%);
+  --secondary-foreground: hsl(0, 0%, 96%);
+  --secondary-hover: hsl(240, 4%, 16%);
 
-  --input-background: hsl(240, 4%, 11%);
-  --input-foreground: hsl(240, 2%, 98%);
-  --input-placeholder: hsl(240, 2%, 65%);
-  --input-border: hsl(240, 2%, 20%);
+  --brand-text: hsl(165, 51%, 75%);
+  --danger-text: hsl(352, 85%, 65%);
 
-  --scrollbar: hsl(240, 2%, 22%);
-  --border: hsl(240, 2%, 15%);
-  --ring: hsl(0, 0%, 75%);
+  --scrollbar: hsl(0, 0%, 25%);
+  --ring: hsl(0, 0%, 85%);
+
+  --shadow-card:
+    hsla(210, 8%, 2%, 0.3) 0px 5px 8px,
+    inset 0px 2px 3px hsla(210, 8%, 30%, 0.2);
+
+  --shadow-popover:
+    hsla(210, 8%, 2%, 0.45) 0px 7px 10px,
+    inset 0px 2px 3px hsla(210, 8%, 30%, 0.2);
+
+  --shadow-input:
+    hsla(210, 8%, 2%, 0.25) 0px 1px 2px,
+    inset 0px 1px 2px hsla(210, 8%, 50%, 0.15);
+
+  --shadow-btn-brand:
+    hsla(210, 8%, 2%, 0.25) 0px 1px 4px,
+    inset 0px 2px 3px hsla(210, 8%, 90%, 0.25);
+
+  --shadow-btn-primary:
+    hsla(210, 8%, 0%, 0.7) 0px 2px 4px, inset 0px 2px 4px hsla(210, 0%, 100%, 1);
+
+  --shadow-btn-secondary:
+    hsla(210, 8%, 2%, 0.2) 0px 1px 3px,
+    inset 0px 1px 1px hsla(210, 8%, 50%, 0.15);
 }
 
 @theme inline {
-  --color-accent: var(--accent);
-  --color-accent-text: var(--accent-text);
-  --color-accent-foreground: var(--accent-foreground);
+  --color-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
 
-  --color-destructive: var(--destructive);
-  --color-destructive-text: var(--destructive-text);
-  --color-destructive-foreground: var(--destructive-foreground);
+  --color-black: #000;
+  --color-white: #fff;
 
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
 
-  --color-background: var(--background);
-  --color-background-card: var(--background-card);
-  --color-background-popover: var(--background-popover);
-  --color-background-popover-focus: var(--background-popover-focus);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-text: var(--brand-text);
 
+  --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-foreground-muted: var(--foreground-muted);
 
-  --color-input-background: var(--input-background);
-  --color-input-foreground: var(--input-foreground);
-  --color-input-placeholder: var(--input-placeholder);
-  --color-input-border: var(--input-border);
+  --color-card: var(--card);
+  --color-input: var(--input);
+  --color-accent: var(--accent);
+  --color-popover: var(--popover);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+
+  --color-danger-500: var(--danger-500);
+  --color-danger-600: var(--danger-600);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-danger-text: var(--danger-text);
 
   --color-scrollbar: var(--scrollbar);
-  --color-border: var(--border);
   --color-ring: var(--ring);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-input: var(--shadow-input);
+  --shadow-popover: var(--shadow-popover);
+  --shadow-btn-brand: var(--shadow-btn-brand);
+  --shadow-btn-primary: var(--shadow-btn-primary);
+  --shadow-btn-secondary: var(--shadow-btn-secondary);
 
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: calc(var(--radius) + 2px);
@@ -103,7 +167,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/40;
+    @apply outline-ring/50;
   }
 
   html {
@@ -111,11 +175,15 @@
   }
 
   body {
-    @apply bg-background text-foreground h-full overflow-x-clip overflow-y-scroll;
+    @apply bg-background text-foreground h-full overflow-y-scroll;
   }
 
   a {
-    @apply focus-visible:ring-ring/70 focus-visible:ring-offset-background rounded outline-0 focus-visible:ring-2 focus-visible:ring-offset-1;
+    @apply focus-visible:ring-ring focus-visible:ring-offset-background rounded outline-0 focus-visible:ring-2 focus-visible:ring-offset-1;
+  }
+
+  hr {
+    @apply border-black/5 dark:border-white/5;
   }
 
   [class*="animate-"] {
@@ -125,7 +193,7 @@
 
 @layer utilities {
   .container {
-    max-inline-size: 1180px;
+    max-inline-size: 1200px;
     margin-inline: auto;
     padding-inline: 0.5rem;
   }
@@ -133,10 +201,4 @@
   .rounded {
     border-radius: var(--radius);
   }
-}
-
-html body[data-scroll-locked] {
-  overflow-y: scroll !important;
-  --removed-body-scroll-bar-size: 0 !important;
-  margin-right: 0 !important;
 }

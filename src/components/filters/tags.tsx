@@ -36,11 +36,12 @@ export default function Tags({ selectedTags, tags, dispatch }: Props) {
             <Button
               key={value.id}
               size="sm"
-              variant="outline"
+              variant="secondary"
               aria-pressed={includes}
               onClick={() => handleSelect(value.id)}
               className={cn("text-xs md:text-sm", {
-                "bg-primary! text-primary-foreground!": includes,
+                "bg-primary! text-primary-foreground! shadow-btn-primary":
+                  includes,
               })}
             >
               {value.name}
