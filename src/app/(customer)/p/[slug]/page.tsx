@@ -75,9 +75,9 @@ function DesktopInfo({ name, description, price }: InfoProps) {
         {formatPrice(price)}
       </p>
 
-      <hr className="my-8" />
+      <hr className="my-5" />
       <p className="text-foreground-muted max-w-xl">{description}</p>
-      <hr className="my-8" />
+      <hr className="my-5" />
     </div>
   );
 }
