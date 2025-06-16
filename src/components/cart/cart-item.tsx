@@ -1,9 +1,9 @@
 import type { CartItemType } from "./cart-reducer";
 import { useCartContext } from "./cart-context";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import Link from "next/link";
 
 interface CartItemProps {
   item: CartItemType;
@@ -11,6 +11,7 @@ interface CartItemProps {
 
 export default function CartItem({ item }: CartItemProps) {
   const { dispatch } = useCartContext();
+  const router = useRouter();
 
   return (
     <div className="flex gap-4 border-b py-5">
@@ -23,12 +24,14 @@ export default function CartItem({ item }: CartItemProps) {
       />
       <div className="flex grow justify-between">
         <div>
-          <Link
-            className="text-sm font-semibold underline-offset-2 hover:underline"
-            href={`/product/${item.slug}`}
+          <Button
+            role="link"
+            variant="link"
+            className="p-0"
+            onClick={() => router.push(`/products/${item.slug}`)}
           >
             {item.name}
-          </Link>
+          </Button>
           <p className="text-foreground-muted mb-2 text-sm">
             {Object.entries(item.attributes).map(([key, value]) => (
               <span key={key} className="text-foreground-muted mr-2 text-sm">

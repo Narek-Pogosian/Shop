@@ -14,7 +14,6 @@ model Product {
     price       Float
     poster      String
     description String
-    isFeatured  Boolean @default(false)
 
     categorySlug      String
     category          Category           @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)

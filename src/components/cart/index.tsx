@@ -10,14 +10,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { formatPrice, getTotalPrice } from "@/lib/utils/price";
+import { useEffect, useState } from "react";
 import { type CartItemType } from "./cart-reducer";
 import { useCartContext } from "./cart-context";
 import { useIsMounted } from "@/hooks/use-is-mounted";
 import { ShoppingCart } from "lucide-react";
+import { useParams } from "next/navigation";
 import CartItem from "./cart-item";
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
 export default function Cart() {
   const params = useParams();
