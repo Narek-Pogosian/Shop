@@ -58,6 +58,7 @@ function PaginationLink({
           variant: isActive ? "default" : "ghost",
           size,
         }),
+        "cursor-pointer",
         className,
       )}
       {...props}

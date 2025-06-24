@@ -166,7 +166,7 @@ export default function CategoryForm() {
 
           <Button
             type="button"
-            variant="outline"
+            variant="secondary"
             className="-mt-2 block"
             onClick={() => addAtttribute({ name: "", values: [""] })}
           >
@@ -216,7 +216,7 @@ function Attribute({ index, control, removeAttribute }: AttributeProps) {
               <Button
                 type="button"
                 variant="destructive"
-                className="w-fit md:h-fit"
+                className="w-fit"
                 size="sm"
                 onClick={() => removeAttribute(index)}
               >
@@ -245,7 +245,7 @@ function Attribute({ index, control, removeAttribute }: AttributeProps) {
                   <Button
                     type="button"
                     size="icon"
-                    variant="outline"
+                    variant="secondary"
                     onClick={() => removeValue(valueIndex)}
                   >
                     <span className="sr-only">Remove Value</span>
@@ -263,7 +263,7 @@ function Attribute({ index, control, removeAttribute }: AttributeProps) {
           // @ts-expect-error it works
           onClick={() => appendValue("")}
           className="mt-2 block"
-          variant="outline"
+          variant="secondary"
           size="sm"
         >
           Add Possible Value

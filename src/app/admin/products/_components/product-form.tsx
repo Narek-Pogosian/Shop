@@ -215,7 +215,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
               <Button
                 type="button"
                 size="icon"
-                variant="outline"
+                variant="secondary"
                 onClick={() => removeTag(index)}
               >
                 <Trash2 />
@@ -225,7 +225,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
           <Button
             size="sm"
             type="button"
-            variant="outline"
+            variant="secondary"
             onClick={() => addTag({ name: "" })}
           >
             Add Tag

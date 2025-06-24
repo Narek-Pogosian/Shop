@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import AddToCart from "@/components/cart/add-to-cart";
+import { sleep } from "@/lib/utils";
 
 type Params = Promise<{ slug: string }>;
 
 export default async function ProductPage({ params }: { params: Params }) {
+  await sleep(2000);
   const { slug } = await params;
   const product = await getProductBySlug(slug);
 
@@ -76,9 +78,7 @@ function DesktopInfo({ name, description, price }: InfoProps) {
         {formatPrice(price)}
       </p>
 
-      <hr className="my-5" />
-      <p className="text-foreground-muted max-w-xl">{description}</p>
-      <hr className="my-5" />
+      <p className="text-foreground-muted max-w-xl pt-6 pb-10">{description}</p>
     </div>
   );
 }

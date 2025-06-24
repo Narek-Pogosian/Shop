@@ -52,7 +52,7 @@ export default function AttributeFilters({
                 <Button
                   key={value}
                   size="sm"
-                  variant="outline"
+                  variant="secondary"
                   aria-label={`Filter by ${attribute.name}: ${value}`}
                   aria-pressed={includes}
                   onClick={() => handleSelect(attribute.name, value)}

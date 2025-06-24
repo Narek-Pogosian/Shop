@@ -18,7 +18,7 @@ export default function CartItem({ item }: CartItemProps) {
       <Image
         src={item.image}
         alt=""
-        width={60}
+        width={70}
         height={95}
         className="rounded"
       />
@@ -47,7 +47,6 @@ export default function CartItem({ item }: CartItemProps) {
           size="sm"
           variant="ghost"
           onClick={() => dispatch({ type: "REMOVE_ITEM", payload: item.id })}
-          className="h-fit"
         >
           Remove
         </Button>
@@ -87,7 +86,7 @@ function QuantityChange({
         max={100}
         value={quantity || ""}
         onChange={handleQuantityChange}
-        className="w-16 rounded border py-1 pr-0.5 pl-2 text-sm"
+        className="bg-input w-16 rounded py-1 pr-0.5 pl-2 text-sm"
       />
     </label>
   );

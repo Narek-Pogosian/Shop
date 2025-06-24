@@ -33,7 +33,7 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <div className="sticky top-0 left-0 h-screen w-64 shrink-0 border-r p-2">
+    <div className="bg-card sticky top-0 left-0 h-screen w-64 shrink-0 p-2">
       <Link href="/" className="mb-4 block px-2 pt-2 font-semibold">
         <Logo />
       </Link>

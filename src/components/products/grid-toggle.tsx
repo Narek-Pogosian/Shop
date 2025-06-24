@@ -10,9 +10,8 @@ export default function GridToggle() {
   return (
     <Button
       size="icon"
-      variant="outline"
+      variant="secondary"
       aria-pressed={showDescriptiveGrid}
-      className="border-input-border"
       onClick={toggleDescriptiveGrid}
     >
       {showDescriptiveGrid ? <Grid3X3 /> : <List />}

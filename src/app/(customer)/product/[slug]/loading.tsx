@@ -28,11 +28,9 @@ export default function ProductLoading() {
           <Skeleton className="mb-4 h-7 max-sm:hidden" />
           <Skeleton className="h-5 w-16" />
 
-          <hr className="my-5 max-sm:hidden" />
+          <Skeleton className="mt-6 mb-2 h-5 max-w-xl max-sm:hidden" />
           <Skeleton className="mb-2 h-5 max-w-xl max-sm:hidden" />
-          <Skeleton className="mb-2 h-5 max-w-xl max-sm:hidden" />
-          <Skeleton className="h-5 max-w-xl max-sm:hidden" />
-          <hr className="my-5 max-sm:hidden" />
+          <Skeleton className="mb-10 h-5 max-w-xl max-sm:hidden" />
 
           <div className="mb-4">
             <Skeleton className="mb-1 h-4 w-12" />

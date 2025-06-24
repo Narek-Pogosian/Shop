@@ -28,7 +28,7 @@ export default function CategoryFilter({
       </h3>
       <div className="flex flex-wrap gap-1">
         <Button
-          variant="outline"
+          variant="secondary"
           size="sm"
           className={cn({ "bg-primary! text-primary-foreground!": !category })}
           aria-pressed={!category}
@@ -39,7 +39,7 @@ export default function CategoryFilter({
         {categories.map((c) => (
           <Button
             key={c.id}
-            variant="outline"
+            variant="secondary"
             size="sm"
             className={cn({
               "bg-primary! text-primary-foreground!": category == c.slug,

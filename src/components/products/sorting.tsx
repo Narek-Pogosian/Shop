@@ -66,7 +66,7 @@ function Sorting() {
         onValueChange={handleChange}
       >
         <SelectTrigger
-          className="w-40 rounded-full bg-white/50 px-4! py-2 font-semibold dark:bg-white/5"
+          className="bg-secondary w-40 px-4 py-2 font-semibold"
           aria-label="Sort by"
           id="sort-by"
         >

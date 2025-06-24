@@ -3,95 +3,103 @@
 
 @plugin 'tailwind-scrollbar';
 
-@variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --accent: hsl(192.9 82.3% 31%);
-  --accent-text: hsl(194.4 69.6% 27.1%);
-  --accent-foreground: hsl(0 0% 100%);
+  --radius: 0.625rem;
 
-  --primary: hsl(240 8% 18%);
-  --primary-foreground: hsl(0 0% 98%);
+  --primary: oklch(0.27 0 0);
+  --primary-foreground: oklch(0.985 0 0);
 
-  --destructive: hsl(0 48% 48%);
-  --destructive-foreground: hsl(0 0% 100%);
-  --destructive-text: hsl(0 52% 40%);
+  --background: oklch(0.985 0 0);
+  --foreground: oklch(0.145 0 0);
+  --foreground-muted: oklch(0.53 0 0);
 
-  --background: hsl(240 20% 96.5%);
-  --background-card: hsl(0 0% 100%);
-  --background-popover: hsl(0 0% 100%);
-  --background-popover-focus: hsl(0 0% 93%);
+  --card: oklch(1 0 0);
+  --input: oklch(0 0 0 / 0.045);
+  --accent: oklch(0 0 0 / 0.06);
+  --popover: oklch(1 0 0);
 
-  --foreground: hsl(240 2% 10%);
-  --foreground-muted: hsl(240 2% 35%);
+  --secondary: oklch(0 0 0 / 0.05);
+  --secondary-hover: oklch(0.75 0 0 / 0.3);
 
-  --input-background: hsl(240 12% 98%);
-  --input-foreground: hsl(240 2% 10%);
-  --input-placeholder: hsl(240 6% 35%);
-  --input-border: hsl(240 12% 87.5%);
+  --destructive: oklch(0.57 0.16 20.15);
+  --destructive-foreground: oklch(1 0 0);
+  --destructive-text: oklch(0.45 0.16 20);
 
-  --scrollbar: hsl(240 8% 82%);
-  --border: hsl(240 6% 89%);
-  --ring: hsl(0 0% 32%);
-
-  --radius: 6px;
+  --shadow: oklch(0.925 0 0);
+  --scrollbar: oklch(0.8 0 0);
+  --border: oklch(0.92 0 0);
+  --ring: oklch(0.4 0 0);
 }
 
 .dark {
-  --accent-text: hsl(187.9 85.7% 53.3%);
-  --destructive-text: hsl(0 80% 68%);
+  --primary: oklch(0.9 0 0);
+  --primary-foreground: oklch(0.2 0 0);
 
-  --primary: hsl(0 0% 98%);
-  --primary-foreground: hsl(240 5.9% 10%);
+  --background: oklch(0.15 0 0);
+  --foreground: oklch(0.99 0 0);
+  --foreground-muted: oklch(0.7 0 0);
 
-  --background: hsl(240 2% 7%);
-  --background-card: hsl(240 2% 9.5%);
-  --background-popover: hsl(240 2% 8.5%);
-  --background-popover-focus: hsl(240 2% 18.5%);
+  --card: oklch(0.18 0 0);
+  --input: oklch(0.45 0.01 285 / 0.2);
+  --accent: oklch(1 0 0 / 0.08);
+  --popover: oklch(0.19 0 0);
 
-  --foreground: hsl(240 2% 98%);
-  --foreground-muted: hsl(240 2% 70%);
+  --secondary: oklch(0.45 0.01 285 / 0.25);
+  --secondary-hover: oklch(0.45 0.01 285 / 0.38);
 
-  --input-background: hsl(240 4% 11%);
-  --input-foreground: hsl(240 2% 98%);
-  --input-placeholder: hsl(240 2% 65%);
-  --input-border: hsl(240 2% 20%);
+  --destructive-text: oklch(0.72 0.19 22.2);
 
-  --scrollbar: hsl(240 2% 22%);
-  --border: hsl(240 2% 15%);
-  --ring: hsl(0 0% 75%);
+  --scrollbar: oklch(0.3 0 0);
+  --shadow: oklch(0 0 0 / 0.7);
+  --border: oklch(1 0 0 / 0.1);
+  --ring: oklch(0.7 0 0);
 }
 
 @theme inline {
-  --color-accent: var(--accent);
-  --color-accent-text: var(--accent-text);
-  --color-accent-foreground: var(--accent-foreground);
+  --color-*: initial;
 
-  --color-destructive: var(--destructive);
-  --color-destructive-text: var(--destructive-text);
-  --color-destructive-foreground: var(--destructive-foreground);
+  --color-black: #000;
+  --color-white: #fff;
+
+  --color-brand-50: oklch(0.979 0.021 166.113);
+  --color-brand-100: oklch(0.95 0.052 163.051);
+  --color-brand-200: oklch(0.905 0.093 164.15);
+  --color-brand-300: oklch(0.845 0.143 164.978);
+  --color-brand-400: oklch(0.765 0.177 163.223);
+  --color-brand-500: oklch(0.696 0.17 162.48);
+  --color-brand-600: oklch(0.596 0.145 163.225);
+  --color-brand-700: oklch(0.508 0.118 165.612);
+  --color-brand-800: oklch(0.432 0.095 166.913);
+  --color-brand-900: oklch(0.378 0.077 168.94);
+  --color-brand-950: oklch(0.262 0.051 172.552);
 
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
 
   --color-background: var(--background);
-  --color-background-card: var(--background-card);
-  --color-background-popover: var(--background-popover);
-  --color-background-popover-focus: var(--background-popover-focus);
-
   --color-foreground: var(--foreground);
   --color-foreground-muted: var(--foreground-muted);
 
-  --color-input-background: var(--input-background);
-  --color-input-foreground: var(--input-foreground);
-  --color-input-placeholder: var(--input-placeholder);
-  --color-input-border: var(--input-border);
+  --color-card: var(--card);
+  --color-input: var(--input);
+  --color-accent: var(--accent);
+  --color-popover: var(--popover);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-text: var(--destructive-text);
 
   --color-scrollbar: var(--scrollbar);
+  --color-shadow: var(--shadow);
   --color-border: var(--border);
   --color-ring: var(--ring);
 
@@ -103,7 +111,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/40;
+    @apply border-border outline-ring/50;
   }
 
   html {
@@ -111,11 +119,11 @@
   }
 
   body {
-    @apply bg-background text-foreground h-full overflow-x-clip overflow-y-scroll;
+    @apply bg-background text-foreground h-full overflow-y-scroll;
   }
 
   a {
-    @apply focus-visible:ring-ring/70 focus-visible:ring-offset-background rounded outline-0 focus-visible:ring-2 focus-visible:ring-offset-1;
+    @apply focus-visible:ring-ring focus-visible:ring-offset-background rounded outline-0 focus-visible:ring-2 focus-visible:ring-offset-1;
   }
 
   [class*="animate-"] {
@@ -125,7 +133,7 @@
 
 @layer utilities {
   .container {
-    max-inline-size: 1180px;
+    max-inline-size: 1200px;
     margin-inline: auto;
     padding-inline: 0.5rem;
   }
@@ -133,10 +141,4 @@
   .rounded {
     border-radius: var(--radius);
   }
-}
-
-html body[data-scroll-locked] {
-  overflow-y: scroll !important;
-  --removed-body-scroll-bar-size: 0 !important;
-  margin-right: 0 !important;
 }

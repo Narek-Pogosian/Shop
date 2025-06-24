@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -39,8 +39,10 @@ export default function FiltersDialog({ categories, tags }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className={buttonVariants()}>
-        <Filter /> Filters
+      <DialogTrigger asChild>
+        <Button>
+          <Filter /> Filters
+        </Button>
       </DialogTrigger>
 
       <DialogContent className="py-0 sm:max-w-xl">
@@ -142,14 +144,10 @@ function Filters({
         />
       )}
 
-      <DialogFooter className="bg-background sticky bottom-0 -mt-4 pt-4 pb-6">
-        <Button size="sm" onClick={handleSubmit}>
-          Save Filters
-        </Button>
+      <DialogFooter className="bg-popover sticky bottom-0 -mt-4 pt-4 pb-6 sm:justify-start">
+        <Button onClick={handleSubmit}>Save Filters</Button>
         <DialogClose asChild>
-          <Button variant="outline" size="sm">
-            Cancel
-          </Button>
+          <Button variant="ghost">Cancel</Button>
         </DialogClose>
       </DialogFooter>
     </div>
