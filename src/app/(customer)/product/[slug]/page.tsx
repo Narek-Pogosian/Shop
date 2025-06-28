@@ -2,15 +2,13 @@ import { getProductBySlug } from "@/server/queries/products";
 import { formatPrice } from "@/lib/utils/price";
 import { Luggage } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AddToCart from "@/components/cart/add-to-cart";
 import Image from "next/image";
 import Link from "next/link";
-import AddToCart from "@/components/cart/add-to-cart";
-import { sleep } from "@/lib/utils";
 
 type Params = Promise<{ slug: string }>;
 
 export default async function ProductPage({ params }: { params: Params }) {
-  await sleep(2000);
   const { slug } = await params;
   const product = await getProductBySlug(slug);
 

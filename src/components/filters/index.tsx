@@ -144,10 +144,10 @@ function Filters({
         />
       )}
 
-      <DialogFooter className="bg-popover sticky bottom-0 -mt-4 pt-4 pb-6 sm:justify-start">
+      <DialogFooter className="bg-popover sticky bottom-0 pt-4 pb-6 sm:justify-start">
         <Button onClick={handleSubmit}>Save Filters</Button>
         <DialogClose asChild>
-          <Button variant="ghost">Cancel</Button>
+          <Button variant="secondary">Close</Button>
         </DialogClose>
       </DialogFooter>
     </div>

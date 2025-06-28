@@ -11,8 +11,6 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:hover:bg-primary/80",
-        brand:
-          "bg-brand-700 hover:bg-brand-800 text-white focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         destructive:
           "bg-destructive text-desctructive-foreground text-white hover:bg-destructive/90 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         secondary: "bg-secondary hover:bg-secondary-hover",

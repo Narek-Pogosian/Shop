@@ -10,7 +10,7 @@ function LoginPage() {
         Don&apos;t have an account,{" "}
         <Link
           href="/register"
-          className="text-brand-800 dark:text-brand-200 hover:underline"
+          className="text-brand-800 dark:text-brand-300 hover:underline"
         >
           register here
         </Link>

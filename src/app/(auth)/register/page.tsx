@@ -10,7 +10,7 @@ function RegisterPage() {
         Already have an account,{" "}
         <Link
           href="/login"
-          className="text-brand-800 dark:text-brand-200 hover:underline"
+          className="text-brand-800 dark:text-brand-300 hover:underline"
         >
           login here
         </Link>
