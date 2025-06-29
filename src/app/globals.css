@@ -41,7 +41,7 @@
   --danger-text: hsl(352, 85%, 40%);
 
   --scrollbar: hsl(0, 0%, 75%);
-  --ring: var(--brand-600);
+  --ring: hsl(0, 0%, 15%);
 
   --shadow-card:
     hsla(230, 40%, 40%, 0.2) 0px 4px 7px,
