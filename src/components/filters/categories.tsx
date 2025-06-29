@@ -30,7 +30,9 @@ export default function CategoryFilter({
         <Button
           variant="secondary"
           size="sm"
-          className={cn({ "bg-primary! text-primary-foreground!": !category })}
+          className={cn({
+            "bg-primary! text-primary-foreground!": !category,
+          })}
           aria-pressed={!category}
           onClick={() => handleCategoryChange(undefined)}
         >

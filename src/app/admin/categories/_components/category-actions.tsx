@@ -60,11 +60,7 @@ function CategoryDeleteDialog({ id }: { id: number }) {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <Button
-            loading={isPending}
-            variant="destructive"
-            onClick={handleDelete}
-          >
+          <Button loading={isPending} variant="danger" onClick={handleDelete}>
             Delete
           </Button>
         </AlertDialogFooter>

@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import { cn } from "@/lib/utils";
 
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
@@ -8,10 +7,9 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
       type={type}
       data-slot="input"
       className={cn(
-        "file:text-foreground placeholder:text-foreground-muted selection:bg-primary selection:text-primary-foreground bg-input flex h-9 w-full min-w-0 rounded px-3 py-1 text-base outline-0 transition-[color,box-shadow] file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none md:text-sm",
-        "disabled:cursor-not-allowed disabled:opacity-70",
-        "focus-visible:ring-ring focus-visible:ring-2",
-        "aria-invalid:ring-destructive/70 aria-invalid:outline-destructive/40 aria-invalid:outline-1",
+        "placeholder:text-foreground-muted bg-input shadow-input h-9 w-full min-w-0 rounded px-3 py-1 text-sm outline-0 transition-[color,box-shadow] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-70",
+        "focus-visible:ring-ring focus-visible:outline-ring focus-visible:ring-2 focus-visible:outline-1",
+        "aria-invalid:ring-danger-500/50 aria-invalid:outline-danger-500/50 aria-invalid:outline-1",
         className,
       )}
       {...props}

@@ -10,77 +10,120 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.5rem;
 
-  --primary: oklch(0.27 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: hsl(0, 0%, 15%);
+  --primary-foreground: hsl(0, 0%, 98%);
 
-  --background: oklch(0.985 0 0);
-  --foreground: oklch(0.145 0 0);
-  --foreground-muted: oklch(0.53 0 0);
+  --background: hsl(210, 18%, 96.5%);
+  --foreground: hsl(0, 0%, 6%);
+  --foreground-muted: hsl(0, 0%, 42%);
 
-  --card: oklch(1 0 0);
-  --input: oklch(0 0 0 / 0.045);
-  --accent: oklch(0 0 0 / 0.06);
-  --popover: oklch(1 0 0);
+  --card: hsl(0, 0%, 98%);
+  --input: hsl(240, 5%, 99%);
+  --accent: hsla(240, 8%, 89%, 37%);
+  --popover: hsl(240, 4%, 99%);
 
-  --secondary: oklch(0 0 0 / 0.05);
-  --secondary-hover: oklch(0.75 0 0 / 0.3);
+  --brand-400: hsl(165, 51%, 42%);
+  --brand-500: hsl(165, 51%, 33%);
+  --brand-600: hsl(165, 51%, 27%);
 
-  --destructive: oklch(0.57 0.16 20.15);
-  --destructive-foreground: oklch(1 0 0);
-  --destructive-text: oklch(0.45 0.16 20);
+  --brand-foreground: hsl(0, 0%, 100%);
+  --brand-text: hsl(165, 51%, 25%);
 
-  --shadow: oklch(0.925 0 0);
-  --scrollbar: oklch(0.8 0 0);
-  --border: oklch(0.92 0 0);
-  --ring: oklch(0.4 0 0);
+  --secondary: hsl(0, 0%, 99.3%);
+  --secondary-foreground: hsl(0, 0%, 6%);
+  --secondary-hover: hsl(240, 4%, 96%);
+
+  --danger-500: hsl(352, 65%, 50%);
+  --danger-600: hsl(352, 65%, 42%);
+  --danger-foreground: hsl(0, 0%, 100%);
+  --danger-text: hsl(352, 85%, 40%);
+
+  --scrollbar: hsl(0, 0%, 75%);
+  --ring: var(--brand-600);
+
+  --shadow-card:
+    hsla(230, 40%, 40%, 0.2) 0px 4px 7px,
+    inset 0px 3px 5px hsla(210, 8%, 100%, 1);
+
+  --shadow-popover:
+    hsla(230, 20%, 40%, 0.3) 0px 6px 10px,
+    inset 0px 3px 5px hsla(210, 8%, 100%, 1);
+
+  --shadow-input:
+    hsla(210, 24%, 2%, 0.15) 0px 1px 2px,
+    inset 0px 1px 2px hsla(210, 8%, 100%, 1);
+
+  --shadow-btn-brand:
+    hsla(210, 8%, 2%, 0.25) 0px 1px 5px,
+    inset 0px 1px 3px hsla(210, 8%, 100%, 0.35);
+
+  --shadow-btn-secondary:
+    hsla(210, 8%, 22%, 0.2) 0px 1px 3px,
+    inset 0px 1px 1px hsla(210, 8%, 100%, 1);
 }
 
 .dark {
-  --primary: oklch(0.9 0 0);
-  --primary-foreground: oklch(0.2 0 0);
+  --primary: hsl(0, 0%, 87%);
+  --primary-foreground: hsl(0, 0%, 9%);
 
-  --background: oklch(0.15 0 0);
-  --foreground: oklch(0.99 0 0);
-  --foreground-muted: oklch(0.7 0 0);
+  --background: hsl(0, 0%, 9%);
+  --foreground: hsl(0, 0%, 100%);
+  --foreground-muted: hsl(0, 0%, 65%);
 
-  --card: oklch(0.18 0 0);
-  --input: oklch(0.45 0.01 285 / 0.2);
-  --accent: oklch(1 0 0 / 0.08);
-  --popover: oklch(0.19 0 0);
+  --card: hsl(240, 2%, 11%);
+  --input: hsl(240, 5%, 16%);
+  --accent: hsla(240, 8%, 19%, 62%);
+  --popover: hsl(240, 2%, 11%);
 
-  --secondary: oklch(0.45 0.01 285 / 0.25);
-  --secondary-hover: oklch(0.45 0.01 285 / 0.38);
+  --secondary: hsl(240, 4%, 13%);
+  --secondary-foreground: hsl(0, 0%, 96%);
+  --secondary-hover: hsl(240, 4%, 16%);
 
-  --destructive-text: oklch(0.72 0.19 22.2);
+  --brand-text: hsl(165, 51%, 75%);
+  --danger-text: hsl(352, 85%, 65%);
 
-  --scrollbar: oklch(0.3 0 0);
-  --shadow: oklch(0 0 0 / 0.7);
-  --border: oklch(0.22 0 0);
-  --ring: oklch(0.7 0 0);
+  --scrollbar: hsl(0, 0%, 25%);
+  --ring: hsl(0, 0%, 85%);
+
+  --shadow-card:
+    hsla(210, 8%, 2%, 0.3) 0px 5px 8px,
+    inset 0px 2px 3px hsla(210, 8%, 30%, 0.2);
+
+  --shadow-popover:
+    hsla(210, 8%, 2%, 0.45) 0px 7px 10px,
+    inset 0px 2px 3px hsla(210, 8%, 30%, 0.2);
+
+  --shadow-input:
+    hsla(210, 8%, 2%, 0.25) 0px 1px 2px,
+    inset 0px 1px 2px hsla(210, 8%, 50%, 0.15);
+
+  --shadow-btn-brand:
+    hsla(210, 8%, 2%, 0.25) 0px 1px 4px,
+    inset 0px 1px 3px hsla(210, 8%, 90%, 0.3);
+
+  --shadow-btn-secondary:
+    hsla(210, 8%, 2%, 0.2) 0px 1px 3px,
+    inset 0px 1px 1px hsla(210, 8%, 50%, 0.15);
 }
 
 @theme inline {
   --color-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
 
   --color-black: #000;
   --color-white: #fff;
 
-  --color-brand-50: oklch(0.995 0.08 9);
-  --color-brand-100: oklch(0.95 0.13 9);
-  --color-brand-200: oklch(0.86 0.13 9);
-  --color-brand-300: oklch(0.72 0.13 9);
-  --color-brand-400: oklch(0.6 0.13 9);
-  --color-brand-500: oklch(0.5 0.13 9);
-  --color-brand-600: oklch(0.41 0.1 9);
-  --color-brand-700: oklch(0.37 0.1 9);
-  --color-brand-800: oklch(0.32 0.1 9);
-  --color-brand-900: oklch(0.26 0.1 9);
-  --color-brand-950: oklch(0.2 0.1 9);
-
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-text: var(--brand-text);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -94,14 +137,19 @@
   --color-secondary: var(--secondary);
   --color-secondary-hover: var(--secondary-hover);
 
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-destructive-text: var(--destructive-text);
+  --color-danger-500: var(--danger-500);
+  --color-danger-600: var(--danger-600);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-danger-text: var(--danger-text);
 
   --color-scrollbar: var(--scrollbar);
-  --color-shadow: var(--shadow);
-  --color-border: var(--border);
   --color-ring: var(--ring);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-input: var(--shadow-input);
+  --shadow-popover: var(--shadow-popover);
+  --shadow-btn-brand: var(--shadow-btn-brand);
+  --shadow-btn-secondary: var(--shadow-btn-secondary);
 
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: calc(var(--radius) + 2px);
@@ -111,7 +159,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply outline-ring/50;
   }
 
   html {
@@ -124,6 +172,10 @@
 
   a {
     @apply focus-visible:ring-ring focus-visible:ring-offset-background rounded outline-0 focus-visible:ring-2 focus-visible:ring-offset-1;
+  }
+
+  hr {
+    @apply border-accent;
   }
 
   [class*="animate-"] {

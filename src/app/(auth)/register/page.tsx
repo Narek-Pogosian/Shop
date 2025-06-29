@@ -8,10 +8,7 @@ function RegisterPage() {
       <RegisterForm />
       <p className="mt-10 text-center text-sm font-medium">
         Already have an account,{" "}
-        <Link
-          href="/login"
-          className="text-brand-800 dark:text-brand-300 hover:underline"
-        >
+        <Link href="/login" className="text-brand-text hover:underline">
           login here
         </Link>
       </p>

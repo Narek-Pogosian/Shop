@@ -124,6 +124,7 @@ function AddToCart({ product }: Props) {
         <Button
           disabled={!isValid}
           onClick={handleAdd}
+          variant="brand"
           aria-label={`Add ${quantity} items to cart with selected attributes`}
           className="w-28"
         >

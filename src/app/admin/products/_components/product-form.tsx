@@ -328,7 +328,7 @@ function CategoryAndAttributes({
             </p>
             {form.formState.errors &&
               form.getFieldState("productAttributes").error && (
-                <p className="text-destructive-text -mt-2 mb-2 text-xs">
+                <p className="text-danger-text -mt-2 mb-2 text-xs">
                   Pick atleast 1 option for each attribute
                 </p>
               )}

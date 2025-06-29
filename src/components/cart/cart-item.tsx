@@ -14,7 +14,7 @@ export default function CartItem({ item }: CartItemProps) {
   const router = useRouter();
 
   return (
-    <div className="flex gap-4 border-b py-5">
+    <div className="border-accent flex gap-4 border-b py-5">
       <Image
         src={item.image}
         alt=""
@@ -46,6 +46,7 @@ export default function CartItem({ item }: CartItemProps) {
         <Button
           size="sm"
           variant="ghost"
+          className="h-fit"
           onClick={() => dispatch({ type: "REMOVE_ITEM", payload: item.id })}
         >
           Remove
@@ -94,7 +95,7 @@ function QuantityChange({
 
 export function PreviewCartItem({ item }: CartItemProps) {
   return (
-    <div className="flex gap-4 border-b py-4">
+    <div className="border-accent flex gap-4 border-b py-4">
       <Image
         src={item.image}
         alt=""

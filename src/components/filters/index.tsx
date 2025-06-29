@@ -40,7 +40,7 @@ export default function FiltersDialog({ categories, tags }: Props) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button>
+        <Button variant="brand">
           <Filter /> Filters
         </Button>
       </DialogTrigger>
@@ -144,7 +144,7 @@ function Filters({
         />
       )}
 
-      <DialogFooter className="bg-popover sticky bottom-0 pt-4 pb-6 sm:justify-start">
+      <DialogFooter className="bg-background sticky bottom-0 pt-4 pb-6 sm:justify-start">
         <Button onClick={handleSubmit}>Save Filters</Button>
         <DialogClose asChild>
           <Button variant="secondary">Close</Button>

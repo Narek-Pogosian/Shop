@@ -129,7 +129,7 @@ function RegisterForm() {
           </p>
         )}
 
-        <Button loading={isLoading} type="submit">
+        <Button variant="brand" loading={isLoading} type="submit">
           Register
         </Button>
       </form>

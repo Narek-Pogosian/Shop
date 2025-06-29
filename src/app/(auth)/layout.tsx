@@ -12,7 +12,7 @@ function AuthLayout({ children }: { children: React.ReactNode }) {
         </Link>
       </Button>
 
-      <div className="shadow-shadow bg-card mx-auto max-w-lg rounded p-8 shadow-lg">
+      <div className="shadow-card bg-card mx-auto max-w-lg rounded p-8">
         {children}
       </div>
     </div>

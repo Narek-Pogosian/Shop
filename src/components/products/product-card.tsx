@@ -49,7 +49,7 @@ export default function ProductCard({ product }: Props) {
             {product.tags.map((t) => (
               <li
                 key={t.id}
-                className="bg-primary text-primary-foreground rounded px-1 py-0.5 text-xs font-semibold sm:px-3 sm:py-1.5 sm:text-sm"
+                className="bg-brand-500 text-brand-foreground rounded px-1 py-0.5 text-xs font-semibold sm:px-2 sm:py-1"
               >
                 {t.name}
               </li>

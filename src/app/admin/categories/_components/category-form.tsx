@@ -198,7 +198,7 @@ function Attribute({ index, control, removeAttribute }: AttributeProps) {
   });
 
   return (
-    <li className="space-y-4 border-b pb-6">
+    <li className="border-accent space-y-4 border-b pb-6">
       <FormField
         control={control}
         name={`attributes.${index}.name`}
@@ -215,7 +215,7 @@ function Attribute({ index, control, removeAttribute }: AttributeProps) {
               </FormControl>
               <Button
                 type="button"
-                variant="destructive"
+                variant="danger"
                 className="w-fit"
                 size="sm"
                 onClick={() => removeAttribute(index)}

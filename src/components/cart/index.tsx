@@ -75,7 +75,7 @@ function CartContent() {
 
       <div className="py-6 text-center">
         <CartPrice items={cart} />
-        <Button className="mt-2 w-full" asChild>
+        <Button className="mt-2 w-full" variant="secondary" asChild>
           <Link href="/checkout">Procceed to checkout</Link>
         </Button>
       </div>
@@ -105,7 +105,7 @@ export function CartPrice({ items }: { items: CartItemType[] }) {
 const CartBadge = ({ count }: { count: number }) => (
   <span
     aria-hidden
-    className="bg-primary text-primary-foreground pointer-events-none absolute -top-1 -right-1 flex size-5 items-center justify-center rounded-full text-xs font-semibold"
+    className="bg-brand-500 text-brand-foreground pointer-events-none absolute -top-1 -right-1 flex size-5 items-center justify-center rounded-full text-xs font-semibold"
   >
     {count}
   </span>

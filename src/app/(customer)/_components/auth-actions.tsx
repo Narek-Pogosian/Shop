@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function SignInButton() {
   return (
-    <Button size="sm" variant="secondary" asChild>
+    <Button size="sm" variant="brand" asChild>
       <Link href="/login">Sign in</Link>
     </Button>
   );

@@ -15,8 +15,8 @@ export default async function ProductPage({ params }: { params: Params }) {
   if (!product)
     return (
       <div className="pt-20 text-center">
-        <div className="bg-primary/5 mx-auto mb-4 flex size-28 items-center justify-center rounded-full">
-          <Luggage className="text-primary size-14" />
+        <div className="bg-brand/5 mx-auto mb-4 flex size-28 items-center justify-center rounded-full">
+          <Luggage className="text-brand size-14" />
         </div>
         <h1 className="mb-4 text-xl font-semibold">Product not found</h1>
         <Button size="lg" asChild>

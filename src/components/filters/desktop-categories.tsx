@@ -21,6 +21,7 @@ export default function DesktopCategories({
       params.set("category", category);
     }
 
+    params.delete("attributes");
     params.delete("page");
     updateParams(params);
   }
@@ -30,7 +31,7 @@ export default function DesktopCategories({
       <Button
         variant="secondary"
         className={cn({
-          "bg-black/10! dark:bg-white/20!": !currentCategory,
+          "bg-secondary-hover!": !currentCategory,
         })}
         aria-pressed={!currentCategory}
         onClick={() => handleCategoryChange(undefined)}
@@ -43,7 +44,7 @@ export default function DesktopCategories({
           key={c.id}
           variant="secondary"
           className={cn({
-            "bg-black/10! dark:bg-white/20!": currentCategory == c.slug,
+            "bg-secondary-hover!": currentCategory == c.slug,
           })}
           aria-pressed={currentCategory == c.slug}
           onClick={() => handleCategoryChange(c.slug)}

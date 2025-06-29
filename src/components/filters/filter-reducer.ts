@@ -24,7 +24,7 @@ export type FilterDispatch = ActionDispatch<[action: Action]>;
 export function filterReducer(state: FilterState, action: Action): FilterState {
   switch (action.type) {
     case "SET_CATEGORY":
-      return { ...state, category: action.payload };
+      return { ...state, category: action.payload, attributes: [] };
 
     case "SET_MIN_PRICE":
       return { ...state, min_price: action.payload };
